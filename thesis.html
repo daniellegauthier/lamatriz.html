@@ -1,326 +1,215 @@
-<!--
-  THESIS.HTML — DRAFT PROMPTER
-  ============================
-  How to use this file: everything in [[ double brackets ]] is a prompt for
-  YOU to retype in your own voice — the fact, citation, or page number next
-  to it is already correct and doesn't need to be re-researched. Everything
-  NOT in brackets is either pulled straight from your live page (kept as-is)
-  or a full citation you can drop in without rewriting.
-
-  Color-sequence beats are marked as HTML comments above each section so you
-  can see which of the 10 colors each part of the page is carrying, per the
-  condensed sequence: White > Black > Gold > Green > Cyan > Purple > Blue >
-  Orange > Magenta > White.
-
-  Sections marked ⟨MOVED⟩ are pulled up from lower on your current live page.
-  Sections marked ⟨NEW⟩ don't exist on the live page yet.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://daniellegauthier.github.io/lamatriz.html/thesis">
-  <title>Thesis — La Matriz: Naming the Incline</title>
-  <!-- [[ Write: new meta-description. Old one led with "Semantic Color Math for
-       emotional-AI alignment" — math-first. New one should lead with naming/
-       striated-smooth, math as the second clause, per your own reordering. ]] -->
-  <meta name="description" content="[[your new meta description]]">
-  <meta property="og:title" content="La Matriz Thesis — Naming the Incline">
-  <meta property="og:description" content="[[your new og:description, same naming-first logic]]">
-  <meta property="og:image" content="https://daniellegauthier.github.io/lamatriz.html/og.png">
-  <meta name="theme-color" content="#0B0B0C">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://daniellegauthier.github.io/lamatriz.html/thesis">
+<title>Thesis — La Matriz: Naming the Incline</title>
+<meta name="description" content="[[your new meta description]]">
+<meta property="og:title" content="La Matriz Thesis — Naming the Incline">
+<meta property="og:description" content="[[your new og:description, same naming-first logic]]">
+<meta property="og:image" content="https://daniellegauthier.github.io/lamatriz.html/og.png">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<div class="page-wrap">
+<header>
+<a class="logo" href="/lamatriz.html/">
+<img src="./assets/img/la matriz root only.png" alt="La Matriz logo">
+<span>lamatriz.html</span>
+</a>
+<ul id="primaryNav">
+<li><a href="/lamatriz.html/">Home</a></li>
+<li><a href="/lamatriz.html/consulting">Consulting</a></li>
+<li><a href="/lamatriz.html/api">API</a></li>
+<li><strong>Thesis</strong></li>
+<li><a href="/lamatriz.html/privacy">Privacy</a></li>
+<li><a href="/lamatriz.html/terms">Terms</a></li>
+<li><a href="/lamatriz.html/gnh-work-statement">Work Statement</a></li>
+<li><a href="/lamatriz.html/socials">Socials</a></li>
+<li><a href="/lamatriz.html/contact">Contact</a></li>
+</ul>
+</header>
 
-<nav>
-  <a href="https://daniellegauthier.github.io/lamatriz.html/">
-    <img src="assets/img/la matriz root only.png" alt="La Matriz logo"> lamatriz.html
-  </a>
-  <ul>
-    <li><a href="/consulting">Consulting</a></li>
-    <li><a href="/api">API</a></li>
-    <li><a href="/thesis">Thesis</a></li>
-    <li><a href="/privacy">Privacy</a></li>
-    <li><a href="/terms">Terms</a></li>
-    <li><a href="/gnh-work-statement">Work Statement</a></li>
-    <li><a href="/socials">Socials</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
-</nav>
+<main>
+
+<div class="breadcrumb">
+<a href="/lamatriz.html/">← Home</a>
+&nbsp;·&nbsp;
+<a href="/lamatriz.html/api">Explore the API →</a>
+</div>
 
 <!-- ============================================================
      BEAT 1 — WHITE — Opening
-     Kept from your live Validity & Protection Statement, mostly as-is.
      ============================================================ -->
-<header>
-  <!-- [[ Write: new H1 + subhead. Old one: "Semantic Color Math: Nuance Over
-       Precision" / "Quaternion color geometry, hidden-state sequence models,
-       and the honest limits of both." New version should name the arc, not
-       the math, as the subject — math becomes the subordinate clause. ]] -->
-  <h1>Why to Rename and Sort with Color</h1>
-  <p class="subhead">How naming and ensemble can smooth the field of your approach</p>
-  <p class="stat-line">Many trajectories, never one answer, a mirror.</p>
-</header>
+<h1>Why to Rename and Sort with Color</h1>
+<h3>How naming and ensemble can smooth the field of your approach</h3>
+<p>Many trajectories, never one answer, a mirror.</p>
 
-<section id="validity">
-  <h2>Validity & Protection Statement</h2>
-  <p>Every color, quaternion, and sequence on this page is a way of <em>naming</em> something, not measuring it. The goal throughout is accuracy of perspective — finding language that's honest to how a color, a feeling, or a traversal actually sits in relation to the others around it — not a claim that any of this identifies a true, fixed class. Where a figure looks like a classifier (a decision tree, a confusion matrix, a similarity score), read it as a description of <em>closeness</em>, not a verdict.</p>
+<h2 id="validity">Validity & Protection Statement</h2>
+<p>Every color, quaternion, and sequence on this page is a way of <em>naming</em> something, not measuring it. The goal throughout is accuracy of perspective — finding language that's honest to how a color, a feeling, or a traversal actually sits in relation to the others around it — not a claim that any of this identifies a true, fixed class. Where a figure looks like a classifier (a decision tree, a confusion matrix, a similarity score), read it as a description of <em>closeness</em>, not a verdict.</p>
 
-  <h3>Lossy by construction</h3>
-  <p>Any centroid, cluster mean, or similarity-weighted blend of real anchors collapses information by construction. It's a legitimate way to explore where something sits; it is not evidence of what something <em>is</em>.</p>
+<h3>Lossy by construction</h3>
+<p>Any centroid, cluster mean, or similarity-weighted blend of real anchors collapses information by construction. It's a legitimate way to explore where something sits; it is not evidence of what something <em>is</em>.</p>
 
-  <h3>Two geometries, two notions of closeness</h3>
-  <p>The CIELAB ΔE confusion matrix and the Bloch-quaternion geodesic distance measure different things — perceptual difference versus hue-phase difference. Where they agree, that's meaningful convergence. Where they don't, that's the geometry telling the truth about what each metric can and can't see.</p>
+<h3>Two geometries, two notions of closeness</h3>
+<p>The CIELAB ΔE confusion matrix and the Bloch-quaternion geodesic distance measure different things — perceptual difference versus hue-phase difference. Where they agree, that's meaningful convergence. Where they don't, that's the geometry telling the truth about what each metric can and can't see.</p>
 
-  <h3>Embedding is a proxy</h3>
-  <p>Sentence-transformer similarity to anchor text carries its own training-data blind spots, and the deterministic word-overlap fallback is cruder still. Both stand in for semantic closeness; neither <em>is</em> semantic closeness.</p>
+<h3>Embedding is a proxy</h3>
+<p>Sentence-transformer similarity to anchor text carries its own training-data blind spots, and the deterministic word-overlap fallback is cruder still. Both stand in for semantic closeness; neither <em>is</em> semantic closeness.</p>
 
-  <h3>Memory choice changes the reading</h3>
-  <p>The same traversal produces measurably different hidden-state trajectories under embedded versus delay memory. That divergence is reported directly rather than averaged away — a method that only shows its confirming half isn't nuanced, it's precise in disguise.</p>
+<h3>Memory choice changes the reading</h3>
+<p>The same traversal produces measurably different hidden-state trajectories under embedded versus delay memory. That divergence is reported directly rather than averaged away — a method that only shows its confirming half isn't nuanced, it's precise in disguise.</p>
 
-  <h3>The sample is small</h3>
-  <p>Fifteen colors, seventeen traversals, nine classification classes. Every pattern here is a real pattern in this dataset — not yet a claim about color, emotion, or wellness beyond it.</p>
+<h3>The sample is small</h3>
+<p>Fifteen colors, seventeen traversals, nine classification classes. Every pattern here is a real pattern in this dataset — not yet a claim about color, emotion, or wellness beyond it.</p>
 
-  <!-- [[ Write: one closing line here connecting this whole Validity section
-       to Fricker's hermeneutical injustice — the throughline is that naming
-       your own method's limits IS the opposite move from hermeneutical
-       injustice (denying someone the concepts to name their own experience).
-       Fricker, M. (2007). Epistemic Injustice, ch. 7, "Hermeneutical
-       Injustice." ]] -->
-  <p>This practice of renaming and sorting with color is a response to a call to change something to belong more comfortably, and then move forward with connecting further. This is a desire that is felt with shame about my ability to cohere, in support of general liberty in my political identity experience. My experience is one that can be related to across classes of bodies from surveillance on performance of coherence causing dispossession from the body and sense of self, like W. E. B. DuBois's double consciousness (Hatem Bazian, 2013).</p>
-</section>
+<!-- [[ Write: one closing line here connecting this whole Validity section
+     to Fricker's hermeneutical injustice — the throughline is that naming
+     your own method's limits IS the opposite move from hermeneutical
+     injustice (denying someone the concepts to name their own experience).
+     Fricker, M. (2007). Epistemic Injustice, ch. 7, "Hermeneutical
+     Injustice." ]] -->
+<p>This practice of renaming and sorting with color is a response to a call to change something to belong more comfortably, and then move forward with connecting further. This is a desire that is felt with shame about my ability to cohere, in support of general liberty in my political identity experience. My experience is one that can be related to across classes of bodies from surveillance on performance of coherence causing dispossession from the body and sense of self, like W. E. B. DuBois's double consciousness (Hatem Bazian, 2013).</p>
+
+<hr>
 
 <!-- ============================================================
      BEAT 2 — BLACK ⟨NEW⟩ — Striated vs. smooth (D&G base grammar)
-     This section does not exist on the live page. It needs to open
-     the argument proper, before any ML/quaternion content.
      ============================================================ -->
-<section id="striated-smooth">
-  <h2>Naming Starts a Traversal</h2>
-  <!-- [[ Write: the base-grammar claim. Citation: Deleuze, G., & Guattari, F.
-       (1987 [1980]). A Thousand Plateaus, plateau 14, "1440: The Smooth and
-       the Striated." Core distinction to state in your own words: striated
-       space names by fixed grid-position; smooth space names by
-       vector/slope/direction. Claim to land by the end of this paragraph:
-       flat, striated naming can only file nuance — it can't hold it. A name
-       that holds a variable for change is what makes an incline possible
-       at all. ]] -->
-  <p>The Nation has sovereignty and counts space to be occupied. Surveillance on coherence is what measuring looks like applied to a person. The nomad or rebel	is the one who is embodied, while a Nation's citizen is treated like a thing and concerned with things. Surveillance doesn't just watch the body, it converts bodyhood into thinghood. Imposed expectations for behavior cause separation in identity from self and self image. Standing up for your body and feelings is interpreted as negative when confused with Nation values. Being vague or inexact around a claim is not acceptable to our surveyors. Shame is what happens when illegibility gets pathologized instead of read as a different kind of precision. Nomad practice cuts the Nation's science loose and when it appropriates from the nomad science. Nation science is metric and homogenous, with conduits constraining movement, held locally to move to the next point. Nomad science in contrast has a holding and universally affecting quality inspired by turbulence.</p>
-</section>
+<h2 id="striated-smooth">Naming Starts a Traversal</h2>
+<p>The Nation has sovereignty and counts space to be occupied. Surveillance on coherence is what measuring looks like applied to a person. The nomad or rebel is the one who is embodied, while a Nation's citizen is treated like a thing and concerned with things. Surveillance doesn't just watch the body, it converts bodyhood into thinghood. Imposed expectations for behavior cause separation in identity from self and self image. Standing up for your body and feelings is interpreted as negative when confused with Nation values. Being vague or inexact around a claim is not acceptable to our surveyors. Shame is what happens when illegibility gets pathologized instead of read as a different kind of precision. Nomad practice cuts the Nation's science loose and when it appropriates from the nomad science. Nation science is metric and homogenous, with conduits constraining movement, held locally to move to the next point. Nomad science in contrast has a holding and universally affecting quality inspired by turbulence.</p>
+
+<hr>
 
 <!-- ============================================================
      BEAT 3 — GOLD ⟨NEW⟩ — Naming preserves opacity (Glissant)
      ============================================================ -->
-<section id="opacity">
-  <!-- [[ Write: bridge from striated/smooth into opacity. Citation: Glissant,
-       É. (1997). Poetics of Relation, "For Opacity." Core claim: the right
-       to opacity — not being fully transparent or reducible to another's
-       terms — is what makes genuine Relation possible without forced
-       assimilation. So naming that preserves opacity is naming that keeps
-       relation safe. This is your bridge into why La Matrice's colors get
-       named as suggestions/embodiments, not a fixed taxonomy. ]] -->
-  <p>Your naming doesn't have to be fully transparent about what you mean. You have the right to be vague or coded or translated. Freedom to dissociate allows for freedom to associate because relation isn't a consistent across conditions. Your distinct naming helps you with my tools and keeps their integrity with you. Naming colors is not a fixed taxonomy, but a representation of a state. </p>
-</section>
+<h2 id="opacity">Opacity Preserved</h2>
+<p>Your naming doesn't have to be fully transparent about what you mean. You have the right to be vague or coded or translated. Freedom to dissociate allows for freedom to associate because relation isn't a consistent across conditions. Your distinct naming helps you with my tools and keeps their integrity with you. Naming colors is not a fixed taxonomy, but a representation of a state.</p>
+
+<hr>
 
 <!-- ============================================================
      BEAT 4 — GREEN ⟨MOVED⟩ — Toussaint's self-given name
-     Pulled up from the "Toussaint Louverture" section near the bottom
-     of your live page. Kept verbatim below — cut it from its current
-     location once it's placed here.
      ============================================================ -->
-<section id="toussaint-naming">
-  <h2>Toussaint Louverture</h2>
-  <p>The strategy he employed in the Haitian revolution runs through the color naming practice: engage an opposing view only to its midpoint — far enough to be heard by it, never so far as to abandon the health-centered position you started from. It's not giving in and it's not refusal. It's a specific, disciplined distance.</p>
-  <p>The traversal that carries his name enacts this formally rather than describing it. Every other sequence I made moves from a starting color to a different ending color. This one doesn't: black, red, green, blue, green, red — it leaves black and returns to red, passing back through green on the way. It's a cycle, not an arrival. Read against the strategy it's named for, that's not a flaw in the sequence — it's the shape of the strategy itself. Louverture's tactic was never to convert an opposing position into his own; it was to move partway toward it, hold there, and let the movement itself pull the other side closer. A traversal with a destination claims to have resolved something. A traversal that cycles back admits it's still in the reaching — a more honest formal match for a strategy that was never about winning the whole distance, only enough of it.</p>
-  <p>This framing comes out of my <a>href="https://www.colorado.edu/lab/medlab/"</a>CU MEDLab</a> Community Fellowship work on governance in Haitian maroon communities.</p>
-  <img src="assets/img/stoic pathway.png" alt="Quaternion trajectory for the toussaint louverture traversal: black, red, green, blue, green, red">
-  <p><em>black → red → green → blue → green → red. A cycle, not an arrival.</em></p>
+<h2 id="toussaint-naming">Toussaint Louverture</h2>
+<p>The strategy he employed in the Haitian revolution runs through the color naming practice: engage an opposing view only to its midpoint — far enough to be heard by it, never so far as to abandon the health-centered position you started from. It's not giving in and it's not refusal. It's a specific, disciplined distance.</p>
+<p>The traversal that carries his name enacts this formally rather than describing it. Every other sequence I made moves from a starting color to a different ending color. This one doesn't: black, red, green, blue, green, red — it leaves black and returns to red, passing back through green on the way. It's a cycle, not an arrival. Read against the strategy it's named for, that's not a flaw in the sequence — it's the shape of the strategy itself. Louverture's tactic was never to convert an opposing position into his own; it was to move partway toward it, hold there, and let the movement itself pull the other side closer. A traversal with a destination claims to have resolved something. A traversal that cycles back admits it's still in the reaching — a more honest formal match for a strategy that was never about winning the whole distance, only enough of it.</p>
+<p>This framing comes out of my <a href="https://www.colorado.edu/lab/medlab/">CU MEDLab</a> Community Fellowship work on governance in Haitian maroon communities.</p>
+<img src="./assets/img/stoic pathway.png" alt="Quaternion trajectory for the toussaint louverture traversal: black, red, green, blue, green, red">
+<p><em>black → red → green → blue → green → red. A cycle, not an arrival.</em></p>
 
-  <!-- [[ Write: one new paragraph here, ahead of or after the above, naming
-       his self-given surname directly as the founding example of the whole
-       page's argument. Citation: Hazareesingh, S. (2020). Black Spartacus.
-       Core claim: "Louverture" ("the opening") is a name that holds
-       transformation inside a single word — naming as a bridge-act, not a
-       classification-act. This is the sentence that should make explicit
-       why this section sits this early on the page now. ]] -->
-  <!--<p></p>-->
-</section>
+<!-- [[ Write: one new paragraph here, ahead of or after the above, naming
+     his self-given surname directly as the founding example of the whole
+     page's argument. Citation: Hazareesingh, S. (2020). Black Spartacus.
+     Core claim: "Louverture" ("the opening") is a name that holds
+     transformation inside a single word — naming as a bridge-act, not a
+     classification-act. This is the sentence that should make explicit
+     why this section sits this early on the page now. ]] -->
+<!--<p></p>-->
+
+<hr>
 
 <!-- ============================================================
      BEAT 5 — CYAN ⟨NEW⟩ — Naming as the axis / transition into your own work
      ============================================================ -->
-<section id="naming-as-axis">
-  <!-- [[ Write: the hinge paragraph. This is where the page turns from the
-       naming argument in the abstract toward your own RNN/quaternion work.
-       No new citation needed here — this is your own connective sentence,
-       something like: naming is the axis the whole apparatus turns on —
-       a name that only marks a position keeps the grid intact; a name that
-       holds direction and change is what lets a different kind of practice
-       in. Then: that's the same test I ran on my own data. ]] -->
-  <p>If nomad science is an inclining plane, vague naming is the step that creates the smallest change necessary to make that foundational incline connecting interior to exterior space.</p>
-</section>
+<h2 id="naming-as-axis">Naming as the Axis</h2>
+<p>If nomad science is an inclining plane, vague naming is the step that creates the smallest change necessary to make that foundational incline connecting interior to exterior space.</p>
 
 <!-- ============================================================
      BEAT 5 (cont.) — Nuance Spine, reordered
-     Existing content kept, reordered so the ML finding follows the
-     naming claim instead of leading it. Two demonstration one-liners
-     inserted at BEAT 6 (Purple) and BEAT 7 (Blue) below.
      ============================================================ -->
-<section id="nuance-spine">
-  <h2>Nuance Spine</h2>
-  <p>Every model on this page answers the same underlying question differently: when a color, or a feeling, sits close to another one — Orange near Brown, Blue near Violet, "curious" near "distrust" — do you force it into one answer, or do you let the closeness stay legible?</p>
+<h2 id="nuance-spine">Nuance Spine</h2>
+<p>Every model on this page answers the same underlying question differently: when a color, or a feeling, sits close to another one — Orange near Brown, Blue near Violet, "curious" near "distrust" — do you force it into one answer, or do you let the closeness stay legible?</p>
 
-  <!-- [[ Rewrite this transition sentence so the ML midterm reads as
-       confirmation of the naming claim above, not as the origin of the
-       question. Old sentence: "My Machine Learning midterm answered that
-       question with numbers before I had language for it." Consider: "The
-       numbers confirmed it before I had the language for it." ]] -->
-  <p>Let's consult color computation. A Color Indicator Model, aiming to create more nuance between different color classes, each of 16 colors forced into a single one-hot anchor — scored worst for prediction ability. A Random Forest reading the same colors as continuous, normalized RGB predictors, letting Orange and Brown sit very near each other in feature space instead of separating them, scored best. The confusions the precise model was penalized for — Blue↔Violet, Brown↔Red, Black↔Brown — turned out to be real, geometric, and predictable in advance from CIELAB distance alone. They weren't noise. They were the data telling the truth about how close those colors actually are.</p>
+<p>Let's consult color computation. A Color Indicator Model, aiming to create more nuance between different color classes, each of 16 colors forced into a single one-hot anchor — scored worst for prediction ability. A Random Forest reading the same colors as continuous, normalized RGB predictors, letting Orange and Brown sit very near each other in feature space instead of separating them, scored best. The confusions the precise model was penalized for — Blue↔Violet, Brown↔Red, Black↔Brown — turned out to be real, geometric, and predictable in advance from CIELAB distance alone. They weren't noise. They were the data telling the truth about how close those colors actually are.</p>
 
-  <p>That's the spine of color naming: <strong>a precise reading collapses information a nuanced reading keeps.</strong> My method is a way of protecting that closeness instead of resolving it. The Bloch-quaternion geometry (Surov, 2022) isn't introduced as a more sophisticated way to classify color — it's introduced because a quaternion can hold a color's position <em>and</em> its ambiguity at once, the way a discrete label cannot.
+<p>That's the spine of color naming: <strong>a precise reading collapses information a nuanced reading keeps.</strong> My method is a way of protecting that closeness instead of resolving it. The Bloch-quaternion geometry (Surov, 2022) isn't introduced as a more sophisticated way to classify color — it's introduced because a quaternion can hold a color's position <em>and</em> its ambiguity at once, the way a discrete label cannot. Refusing to flatten perspective on a geometry of color is a framework to scaffold for refusing to flatten a name.</p>
 
-  <!-- ========== BEAT 6 — PURPLE — Wharton & Koch, one line, light echo ========== -->
-  <!-- [[ Insert one sentence here. Citation: Wharton, K. B., & Koch, D.
-       (2015). Unit Quaternions and the Bloch Sphere, arXiv:1411.4999v2,
-       p.1 (abstract). Fact to reference: they refuse to collapse the
-       3-sphere (unit quaternions) into the 2-sphere Bloch sphere, because
-       that reduction obscures real symmetries. Rhyme to state: refusing to
-       flatten the geometry is the same move as refusing to flatten a name.
-       Mention once — per your own instruction, do not build a paragraph
-       around this. ]] -->
-  Refusing to flatten perspective on a geometry of color is a framework to scaffold for refusing to flatten a name.</p>
+<p>Does the nuance survive a completely different geometry, or was it always just a property of CIELAB color math? Where the two agree, that's evidence the closeness is real. Where they don't, that disagreement gets reported, not smoothed over.</p>
 
-  <p>Does the nuance survive a completely different geometry, or was it always just a property of CIELAB color math? Where the two agree, that's evidence the closeness is real. Where they don't, that disagreement gets reported, not smoothed over.</p>
+<p>A study shows we have better sensitivity to trends with position than with color, but that we prefer color by 60%, costing an 18% reduction in sensitivity.</p>
 
-  <!-- ========== BEAT 7 — BLUE — Witt & Warden, one line ========== -->
-  <!-- [[ Insert one sentence here, ideally right after the striated/smooth
-       language above so it reads as a direct empirical echo of BEAT 2.
-       Citation: Witt, J. K., & Warden, A. C. (2021). Better sensitivity to
-       linear and nonlinear trends with position than with color. Journal
-       of Vision, 21(5):12, p. 1 and p. 12. Facts to reference: line graphs
-       (position/grid — striated) beat stripplots (color — smooth) on
-       sensitivity/precision; stripplots won on visual appeal/preference
-       (60%); the cost of the more appealing stripplots was an 18%
-       reduction in sensitivity (p. 12). One sentence, not a paragraph. ]] -->
-  <p>A study shows we have better sensitivity to trends with position than with color, but that we prefer color by 60%, costing an 18% reduction in sensitivity.</p>
+<p>None of this claims to know what a color <em>means</em>. It claims something narrower and more defensible: that the distance between things is information, and precision that erases distance in the name of a clean answer is a choice, not a neutral default.</p>
 
-  <p>None of this claims to know what a color <em>means</em>. It claims something narrower and more defensible: that the distance between things is information, and precision that erases distance in the name of a clean answer is a choice, not a neutral default.</p>
-</section>
+<hr>
 
 <!-- ============================================================
      BEAT 8 — ORANGE ⟨NEW insertion⟩ — RISE, one line, with its own limit named
      ============================================================ -->
-<section id="creolization-rotation">
-  <!-- [[ Write: bridge from opacity/Relation (Glissant, BEAT 3) into this.
-       Citation: Freenor, M., & Alvarez, L. (2026). Mapping Semantic &
-       Syntactic Relationships with Geometric Rotation (RISE). ICLR 2026 /
-       arXiv:2510.09790v2, p. 1 (Abstract) and p. 4 (Section 4, the
-       Clifford-algebraic rotor). Fact to reference: RISE treats meaning-
-       change across seven languages as a consistent rotation on a
-       hypersphere, not a fixed vector — holding meaning across difference
-       without collapsing every language into one code. IMPORTANT: name the
-       limit in the same breath — RISE's own cross-model results show an
-       English-centric bias (~20% performance gap, Zulu lowest) — this is
-       your Toussaint "reach the middle, not the whole distance" honesty,
-       applied to someone else's model instead of your own. ]] -->
-  <p>Rotor-Invariant Shift Estimation (RISE) treats meaning-change across seven languages as a consistent rotation on a hypersphere, not a fixed vector — holding meaning across difference without collapsing every language into one code. </p>
-</section>
+<h2 id="creolization-rotation">Creolization as Rotation</h2>
+<p>Rotor-Invariant Shift Estimation (RISE) treats meaning-change across seven languages as a consistent rotation on a hypersphere, not a fixed vector — holding meaning across difference without collapsing every language into one code.</p>
+
+<hr>
 
 <!-- ============================================================
      BEAT 9 — MAGENTA — ΔE Confusion Matrix → Quaternion Remake
-     Existing section, content kept as-is below, with one new closing
-     line making the "infrastructure not center" point explicit.
      ============================================================ -->
-<section id="delta-e-quaternion">
-  <h2>ΔE Confusion Matrix → Quaternion Remake</h2>
-  <img src="assets/img/delta e heatmap.png" alt="Inter-class CIELAB color distance heatmap, nine classes">
-  <p><em>Original Practical Machine Learning MSDS coursework finding: Blue↔Violet (ΔE=29.1), Brown↔Red (44.3), Black↔Brown (46.4) read as the most confusable pairs.</em></p>
+<h2 id="delta-e-quaternion">ΔE Confusion Matrix → Quaternion Remake</h2>
+<img src="./assets/img/delta e heatmap.png" alt="Inter-class CIELAB color distance heatmap, nine classes">
+<p><em>Original Practical Machine Learning MSDS coursework finding: Blue↔Violet (ΔE=29.1), Brown↔Red (44.3), Black↔Brown (46.4) read as the most confusable pairs.</em></p>
 
-  <p>Run the same nine classes through the Bloch-quaternion geodesic distance instead, and the picture doesn't confirm that ranking — it reorganizes it. Brown↔Orange, barely notable in CIELAB (ΔE = 79), becomes the single closest pair by a wide margin (4.0°). Black↔White, the <em>most separated</em> pair in CIELAB (ΔE = 162, the largest value in the entire matrix), collapses to 14.2° — among the closest pairs in quaternion space. Across all thirty-six pairs, the two geometries correlate at <strong>r = 0.07</strong> — essentially no linear relationship at all.</p>
+<p>Run the same nine classes through the Bloch-quaternion geodesic distance instead, and the picture doesn't confirm that ranking — it reorganizes it. Brown↔Orange, barely notable in CIELAB (ΔE = 79), becomes the single closest pair by a wide margin (4.0°). Black↔White, the <em>most separated</em> pair in CIELAB (ΔE = 162, the largest value in the entire matrix), collapses to 14.2° — among the closest pairs in quaternion space. Across all thirty-six pairs, the two geometries correlate at <strong>r = 0.07</strong> — essentially no linear relationship at all.</p>
 
-  <p>That's not a failed replication. It's the geometry naming its own blind spot: this Bloch mapping reads hue as azimuthal phase, and phase is undefined for a color with no saturation. Black and white — achromatic by definition — have nowhere stable to sit on that dimension, so they drift toward the same pole regardless of how differently they read to the eye. CIELAB ΔE, built from lightness and chroma together, doesn't have that gap; this Bloch encoding, built from hue and saturation with lightness held separate as an interior radius, does.</p>
+<p>That's not a failed replication. It's the geometry naming its own blind spot: this Bloch mapping reads hue as azimuthal phase, and phase is undefined for a color with no saturation. Black and white — achromatic by definition — have nowhere stable to sit on that dimension, so they drift toward the same pole regardless of how differently they read to the eye. CIELAB ΔE, built from lightness and chroma together, doesn't have that gap; this Bloch encoding, built from hue and saturation with lightness held separate as an interior radius, does.</p>
 
-  <p>So the honest finding isn't "nuance survives a change of geometry." It's narrower and more useful: <strong>each geometry is nuanced about a different axis of closeness, and neither is nuanced about all of them at once.</strong> A method that reports only the geometry favorable to its own argument would have quietly picked one and called it corroboration; reporting both makes the disagreement the point.</p>
+<p>So the honest finding isn't "nuance survives a change of geometry." It's narrower and more useful: <strong>each geometry is nuanced about a different axis of closeness, and neither is nuanced about all of them at once.</strong> A method that reports only the geometry favorable to its own argument would have quietly picked one and called it corroboration; reporting both makes the disagreement the point.</p>
 
-  <ul>
-    <li>Brown ↔ Orange — ΔE 79 / 4.0°</li>
-    <li>Black ↔ White — ΔE 162 / 14.2°</li>
-    <li>Orange ↔ Red — ΔE 52 / 19.5°</li>
-    <li>Brown ↔ Red — ΔE 44 / 22.5°</li>
-    <li>Red ↔ Yellow — ΔE 118 / 24.5°</li>
-    <li>Blue ↔ Violet — ΔE 29.1 (closest in CIELAB, not in top-5 under quaternion geometry)</li>
-  </ul>
+<ul>
+<li>Brown ↔ Orange — ΔE 79 / 4.0°</li>
+<li>Black ↔ White — ΔE 162 / 14.2°</li>
+<li>Orange ↔ Red — ΔE 52 / 19.5°</li>
+<li>Brown ↔ Red — ΔE 44 / 22.5°</li>
+<li>Red ↔ Yellow — ΔE 118 / 24.5°</li>
+<li>Blue ↔ Violet — ΔE 29.1 (closest in CIELAB, not in top-5 under quaternion geometry)</li>
+</ul>
 
-  <!-- [[ Insert pending-result note here if you want it public now. Frame:
-       currently testing whether a model trained with ambiguity kept in
-       (soft labels weighted by ΔE distance) predicts real outcomes better
-       than one trained to resolve it — the naming question applied to
-       model training itself, not just to description. ]]
-  <p>[[optional: pending "color ambiguity supports real predictions" note]]</p> -->
+<p>This computation supports, but doesn't necessarily prove, the use of vague language in naming color.</p>
 
-  <!-- [[ Write: one closing line making explicit that this whole section —
-       and the Decision Tree section below it — is infrastructure, the way
-       position 16 (Magenta) treats the quaternion math in "Naming the
-       Incline": present, but not the center. Naming carries the argument;
-       this section demonstrates it held up under a second geometry. ]] -->
-  <p>This computation supports, but doesn't necessarily prove, the use of vague language in naming color.</p>
-</section>
+<hr>
 
-<!-- Decision Tree section — unchanged, stays here as part of the Magenta/
-     infrastructure cluster. Pull verbatim from your live page. -->
-<section id="decision-tree">
-  <h2>Decision Tree — RGB → Sentiment (MSE)</h2>
-  <p>This regression tree illustrates how <strong>color channels</strong> (R,G,B) partition the dataset to minimize mean-squared error (MSE) of a continuous sentiment score. Impurity at each node is the sample's MSE; splits are chosen to <em>reduce</em> it.</p>
-  <img src="assets/img/rgb decision tree.PNG" alt="Decision tree showing splits on B, G, R with squared_error at nodes">
-  <p><em>Decision Tree trained on synthetic RGB→sentiment data; darker nodes indicate higher predicted sentiment. MSE (Mean Squared Error) is used as the split criterion.</em></p>
-  <h3>Why MSE?</h3>
-  <p>MSE penalizes large errors more than small ones, stabilizing the model against outliers and encouraging smooth partitions in color space.</p>
-  <ul>
-    <li><strong>Lower MSE</strong> at a node ⇒ better fit for that subset.</li>
-    <li>Splits like <code>B ≤ 125</code> or <code>R ≤ 175</code> reflect stable bends between anchors in concept space.</li>
-  </ul>
-  <!-- [[ Optional: one line on the pending "lightness helps recall" test —
-       isolating L* in CIELAB and comparing recall with/without it. ]] 
-  <p>[[optional: pending "lightness helps recall" note]]</p>-->
-</section>
+<!-- Decision Tree section -->
+<h2 id="decision-tree">Decision Tree — RGB → Sentiment (MSE)</h2>
+<p>This regression tree illustrates how <strong>color channels</strong> (R,G,B) partition the dataset to minimize mean-squared error (MSE) of a continuous sentiment score. Impurity at each node is the sample's MSE; splits are chosen to <em>reduce</em> it.</p>
+<img src="./assets/img/rgb decision tree.PNG" alt="Decision tree showing splits on B, G, R with squared_error at nodes">
+<p><em>Decision Tree trained on synthetic RGB→sentiment data; darker nodes indicate higher predicted sentiment. MSE (Mean Squared Error) is used as the split criterion.</em></p>
+<h3>Why MSE?</h3>
+<p>MSE penalizes large errors more than small ones, stabilizing the model against outliers and encouraging smooth partitions in color space.</p>
+<ul>
+<li><strong>Lower MSE</strong> at a node ⇒ better fit for that subset.</li>
+<li>Splits like <code>B ≤ 125</code> or <code>R ≤ 175</code> reflect stable bends between anchors in concept space.</li>
+</ul>
 
-<!-- Pathways / Connections — unchanged, pull verbatim from your live page. -->
-<section id="pathways">
-  <h2>Pathways (11)</h2>
-  <p>Each pathway is a repeatable <em>trajectory</em> through color space, built by hand — colors, sequence, and meaning fixed in advance. [[keep your existing per-pathway content here]]</p>
-</section>
+<hr>
 
-<section id="connections">
-  <h2>Connections (17 Traversals)</h2>
-  <p>The pathways above were fixed in advance. The seventeen connections below are the same kind of object read a different way: not a fixed pathway but a <em>traversal</em>, a sequence of colors moving from one felt state toward another — curious → thoughtful, drain → rise, toussaint louverture — run through the hidden-state RNN described in the Nuance Spine rather than assigned a static reading. Each image is the quaternion trajectory the sequence actually produces: real part, imaginary part, magnitude, and phase across the steps, not an illustration of it.</p>
-  <p>Live app links below point to the hosted Gradio space for that traversal; until deployment they're marked pending rather than left silently broken.</p>
-</section>
+<!-- Pathways / Connections -->
+<h2 id="pathways">Pathways (11)</h2>
+<p>Each pathway is a repeatable <em>trajectory</em> through color space, built by hand — colors, sequence, and meaning fixed in advance. [[keep your existing per-pathway content here]]</p>
+
+<h2 id="connections">Connections (17 Traversals)</h2>
+<p>The pathways above were fixed in advance. The seventeen connections below are the same kind of object read a different way: not a fixed pathway but a <em>traversal</em>, a sequence of colors moving from one felt state toward another — curious → thoughtful, drain → rise, toussaint louverture — run through the hidden-state RNN described in the Nuance Spine rather than assigned a static reading. Each image is the quaternion trajectory the sequence actually produces: real part, imaginary part, magnitude, and phase across the steps, not an illustration of it.</p>
+<p>Live app links below point to the hosted Gradio space for that traversal; until deployment they're marked pending rather than left silently broken.</p>
+
+<hr>
 
 <!-- ============================================================
      BEAT 10 — WHITE — Close
      ============================================================ -->
-<section id="close">
-  <!-- [[ Write: closing paragraph returning to the opening (BEAT 1 / White).
-       No new citation — this is your own line, echoing the shape of
-       position 19 in your full sequence: coherence achieved as ensemble
-       (collectively authored, held nuance the whole way through) is what
-       the opening's performative coherence only imitated. ]] -->
-  <p>Naming colors and grouping them can allow for more genuine coherence in your approach.</p>
-</section>
+<h2 id="close">Close</h2>
+<p>Naming colors and grouping them can allow for more genuine coherence in your approach.</p>
 
-<!-- ============================================================
-     Literature Review — existing sources kept, new ones added below
-     in the same format. No prose changes needed here beyond the
-     additions themselves.
-     ============================================================ -->
-<section id="literature-review">
-  <h2>Literature Review</h2>
-  <h3>Reading List of PDFs</h3>
-  <p><a href="https://github.com/daniellegauthier/reading_list">Morphological grounding.</a></p>
+<hr>
 
-  <h3>Transdisciplinary Context</h3>
-  <p>
+<!-- Literature Review -->
+<h2 id="literature-review">Literature Review</h2>
+<h3>Reading List of PDFs</h3>
+<p><a href="https://github.com/daniellegauthier/reading_list">Morphological grounding.</a></p>
+
+<h3>Transdisciplinary Context</h3>
+<p>
 Risky behavior is framed as individual failure. Parents are expected to emotionally support their children with full financial obligations, with 46% of all new income from global economic growth since 1980 going to the richest 5%. We never catch up in our rest banks once we make it past childhood because care is an unrewarded commodity.
 <br>
 Deficit narratives sell. People would rather engage with what they know and like. We need designs that teach, rather than simply label.
@@ -346,68 +235,63 @@ Sorting with 13 colors rejects the null hypothesis. By removing precision on lab
 Data intimacy through play with color bucket sorting can increase access to care. I dedicate and offer this work to stewards of land and body safety. A prayer for co-liberation.
 </p>
 
-  <h3>Sources</h3>
-  <ul>
-    <li>Alonso-Sanz, R. (2015). On quaternion maps with memory. <em>Complex Systems, 24</em>(3), 223–233.</li>
-    <li>Benjamin, R. (2019). <em>Race after technology.</em> Polity.</li>
-    <li>boyd, d. (2014). <em>It's complicated.</em> Yale University Press.</li>
-    <li>Christian, B., & Griffiths, T. (2016). <em>Algorithms to live by.</em> Henry Holt.</li>
-    <li>Costanza-Chock, S. (2020). <em>Design justice.</em> MIT Press.</li>
-    <li>Federici, S. (2004). <em>Caliban and the witch.</em> Autonomedia.</li>
-    <li>Hickel, J. (2020). <em>Less is more.</em> Penguin Random House.</li>
-    <li>Ingersoll, K. A. (2016). <em>Waves of knowing.</em> Duke University Press.</li>
-    <li>Klein, L. F., & D'Ignazio, C. (2020). <em>Data feminism.</em> MIT Press.</li>
-    <li>Noble, S. U. (2018). <em>Algorithms of oppression.</em> NYU Press.</li>
-    <!-- [[ Check: your current entry reads "Surov, I. A. (2022). Unified
-         space of emotion and color. Frontiers in Psychology. [pending]" —
-         the paper I found under Surov 2022 in Frontiers in Psychology has
-         a different title. Confirm which is correct before finalizing. ]] -->
-    <li>Surov, I. A. (2022). Quantum core affect: Color-emotion structure of semantic atom. <em>Frontiers in Psychology, 13</em>:838029.</li>
-    <li>Zohar, D. (1989). <em>The quantum self.</em> Bloomsbury.</li>
-    <li>Zuckerman, E. (2013). <em>Digital cosmopolitans.</em> W. W. Norton.</li>
+<h3>Sources</h3>
+<ul>
+<li>Alonso-Sanz, R. (2015). On quaternion maps with memory. <em>Complex Systems, 24</em>(3), 223–233.</li>
+<li>Benjamin, R. (2019). <em>Race after technology.</em> Polity.</li>
+<li>boyd, d. (2014). <em>It's complicated.</em> Yale University Press.</li>
+<li>Christian, B., & Griffiths, T. (2016). <em>Algorithms to live by.</em> Henry Holt.</li>
+<li>Costanza-Chock, S. (2020). <em>Design justice.</em> MIT Press.</li>
+<li>Federici, S. (2004). <em>Caliban and the witch.</em> Autonomedia.</li>
+<li>Hickel, J. (2020). <em>Less is more.</em> Penguin Random House.</li>
+<li>Ingersoll, K. A. (2016). <em>Waves of knowing.</em> Duke University Press.</li>
+<li>Klein, L. F., & D'Ignazio, C. (2020). <em>Data feminism.</em> MIT Press.</li>
+<li>Noble, S. U. (2018). <em>Algorithms of oppression.</em> NYU Press.</li>
+<li>Surov, I. A. (2022). Quantum core affect: Color-emotion structure of semantic atom. <em>Frontiers in Psychology, 13</em>:838029.</li>
+<li>Zohar, D. (1989). <em>The quantum self.</em> Bloomsbury.</li>
+<li>Zuckerman, E. (2013). <em>Digital cosmopolitans.</em> W. W. Norton.</li>
+<li>Fricker, M. (2007). <em>Epistemic Injustice.</em> Oxford University Press. Ch. 7.</li>
+<li>Glissant, É. (1997). <em>Poetics of Relation.</em> University of Michigan Press. "For Opacity."</li>
+<li>Deleuze, G., & Guattari, F. (1987 [1980]). <em>A Thousand Plateaus.</em> University of Minnesota Press. Plateaus 12 & 14.</li>
+<li>Hazareesingh, S. (2020). <em>Black Spartacus.</em> Farrar, Straus and Giroux.</li>
+<li>Métraux, A. (1959). <em>Voodoo in Haiti.</em> Oxford University Press.</li>
+<li>Temkin, D. (2014), quoting Clement Valla, on the glitch as system logic, not intrusion.</li>
+<li>Russell, L. (2020). <em>Glitch Feminism.</em> Verso.</li>
+<li>Witt, J. K., & Warden, A. C. (2021). Better sensitivity to linear and nonlinear trends with position than with color. <em>Journal of Vision, 21</em>(5):12, 1–13.</li>
+<li>Wharton, K. B., & Koch, D. (2015). Unit Quaternions and the Bloch Sphere. arXiv:1411.4999v2 [quant-ph].</li>
+<li>Freenor, M., & Alvarez, L. (2026). Mapping Semantic & Syntactic Relationships with Geometric Rotation. ICLR 2026 / arXiv:2510.09790v2 [cs.CL].</li>
+</ul>
 
-    <!-- New sources for the naming arc -->
-    <li>Fricker, M. (2007). <em>Epistemic Injustice.</em> Oxford University Press. Ch. 7.</li>
-    <li>Glissant, É. (1997). <em>Poetics of Relation.</em> University of Michigan Press. "For Opacity."</li>
-    <li>Deleuze, G., & Guattari, F. (1987 [1980]). <em>A Thousand Plateaus.</em> University of Minnesota Press. Plateaus 12 & 14.</li>
-    <li>Hazareesingh, S. (2020). <em>Black Spartacus.</em> Farrar, Straus and Giroux.</li>
-    <li>Métraux, A. (1959). <em>Voodoo in Haiti.</em> Oxford University Press.</li>
-    <li>Temkin, D. (2014), quoting Clement Valla, on the glitch as system logic, not intrusion.</li>
-    <li>Russell, L. (2020). <em>Glitch Feminism.</em> Verso.</li>
+<p>Currently under review with Northwestern University MS Data Science/AI Academic Innovation Research Consultation. Extends the conference thesis prepared for the CU Center for Media, Religion, and Culture's "Why We Come Together" (2026) with the color math that version does not carry.</p>
 
-    <!-- New math sources, listed plainly, no special emphasis -->
-    <li>Witt, J. K., & Warden, A. C. (2021). Better sensitivity to linear and nonlinear trends with position than with color. <em>Journal of Vision, 21</em>(5):12, 1–13.</li>
-    <li>Wharton, K. B., & Koch, D. (2015). Unit Quaternions and the Bloch Sphere. arXiv:1411.4999v2 [quant-ph].</li>
-    <li>Freenor, M., & Alvarez, L. (2026). Mapping Semantic & Syntactic Relationships with Geometric Rotation. ICLR 2026 / arXiv:2510.09790v2 [cs.CL].</li>
-  </ul>
+<hr>
 
-  <p>Currently under review with Northwestern University MS Data Science/AI Academic Innovation Research Consultation. Extends the conference thesis prepared for the CU Center for Media, Religion, and Culture's "Why We Come Together" (2026) with the color math that version does not carry.</p>
-</section>
+<p><i>Guided by system clarity, structured on narrative patterns, optimized for relational metrics.</i>
+&nbsp; <a href="/lamatriz.html/consulting/#Tools">Try My Tools</a>
+&nbsp;·&nbsp;
+<a href="/lamatriz.html/contact">Start a conversation</a></p>
 
-<section id="cta">
-  <h2>Ready to engage the work?</h2>
-  <!-- [[ Confirm domain before finalizing — v1 flagged that these links
-       currently point to lamatriz.ai, not lamatriz.html.
-       You confirmed .html is canonical and lamatriz.ai is not; .ai on its
-       own wasn't addressed. ]] -->
-  <a href="[[confirm domain]]/consulting/#Tools">Try My Tools</a>
-  <a href="[[confirm domain]]/contact">Start a conversation</a>
-</section>
+<hr>
 
-<footer>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/consulting">Consulting</a></li>
-    <li><a href="/api">API</a></li>
-    <li><a href="/thesis">Thesis</a></li>
-    <li><a href="/privacy">Privacy</a></li>
-    <li><a href="/terms">Terms</a></li>
-    <li><a href="/gnh-work-statement">Work Statement</a></li>
-    <li><a href="/socials">Socials</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
-  <p>© La Matriz</p>
-</footer>
+<ul id="primaryNav" style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0;">
+<li><a href="/lamatriz.html/">Home</a></li>
+<li><a href="/lamatriz.html/consulting">Consulting</a></li>
+<li><a href="/lamatriz.html/api">API</a></li>
+<li><a href="/lamatriz.html/thesis">Thesis</a></li>
+<li><a href="/lamatriz.html/privacy">Privacy</a></li>
+<li><a href="/lamatriz.html/terms">Terms</a></li>
+<li><a href="/lamatriz.html/gnh-work-statement">Work Statement</a></li>
+<li><a href="/lamatriz.html/socials">Socials</a></li>
+<li><a href="/lamatriz.html/contact">Contact</a></li>
+</ul>
+<p class="meta">© <span id="y"></span> La Matriz</p>
+
+</main>
+</div>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
