@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Thesis — Physical Magnetism: Semantic Color Math</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Semantic Color Math for emotional-AI alignment. Nuance over precision: quaternion color geometry, hidden-state sequence models, and honest limits.">
+<meta name="description" content="Semantic Color Math for emotional-AI alignment. Nuance over precision: quaternion color geometry, hidden-state sequence models, and honest limits, extending the conference thesis with color math.">
 <link rel="preload" href="./assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <meta property="og:title" content="Physical Magnetism Thesis — Semantic Color Math">
@@ -74,7 +74,7 @@
 <div class="container">
 <div>
 <h1>Semantic Color Math: Nuance Over Precision</h1>
-<p>Quaternion color geometry, hidden-state sequence models, and the honest limits of both.</p>
+<p>A data-science extension of the conference thesis — this version has the color math. Quaternion geometry, hidden-state sequence models, and the honest limits of both.</p>
 <div class="cta-group">
 <a class="btn primary" href="#pathways">Find a Pathway</a>
 <a class="btn ghost" href="#nuance-spine">Jump to the Nuance Spine</a>
@@ -93,16 +93,16 @@
 <div class="container">
 <article class="card" style="grid-column: span 3;">
 <h3>Contents</h3>
-<nav class="footer-nav" aria-label="Thesis sections">
-<a href="#validity">Validity &amp; Protection Statement</a>
-<a href="#nuance-spine">Nuance Spine</a>
-<a href="#tree">Decision Tree (MSE)</a>
-<a href="#clusters">Color Clusters</a>
-<a href="#delta-e-quaternion">ΔE → Quaternion Remake</a>
-<a href="#pathways">Pathways (11)</a>
-<a href="#connections">Connections (17)</a>
-<a href="#toussaint">Toussaint Louverture</a>
-<a href="#literature-review">Literature Review</a>
+<nav aria-label="Thesis sections" style="display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px">
+<a href="#validity" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Validity &amp; Protection Statement</a>
+<a href="#nuance-spine" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Nuance Spine</a>
+<a href="#tree" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Decision Tree (MSE)</a>
+<a href="#clusters" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Color Clusters</a>
+<a href="#delta-e-quaternion" style="color:inherit;text-decoration:underline;text-underline-offset:3px">ΔE → Quaternion Remake</a>
+<a href="#pathways" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Pathways (11)</a>
+<a href="#connections" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Connections (17)</a>
+<a href="#toussaint" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Toussaint Louverture</a>
+<a href="#literature-review" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Literature Review</a>
 </nav>
 </article>
 
@@ -172,8 +172,8 @@ Five clusters in RGB space hint at distinct color families and their affective n
 <div class="container">
 <h2>Nuance Spine</h2>
 <p>Every model on this page answers the same underlying question differently: when a color, or a feeling, sits close to another one — Orange near Brown, Blue near Violet, "curious" near "distrust" — do you force it into one answer, or do you let the closeness stay legible?</p>
-<p>My Machine Learning midterm answered that question with numbers before I had language for it. An Indicator Model — sixteen colors, each forced into a single one-hot anchor — scored worst for prediction ability. A Random Forest reading the same colors as continuous, normalized RGB predictors, letting Orange and Brown sit near each other in feature space instead of separating them by decree, scored best. The confusions the precise model was penalized for — Blue↔Violet, Brown↔Red, Black↔Brown — turned out to be real, geometric, and predictable in advance from CIELAB distance alone. They weren't noise. They were the data telling the truth about how close those colors actually are.</p>
-<p>That's the spine of everything that follows: <strong>a precise reading collapses information a nuanced reading keeps.</strong> Every method after this point is a different way of protecting that closeness instead of resolving it. The Bloch-quaternion geometry (Surov, 2022) isn't introduced as a more sophisticated way to classify color — it's introduced because a quaternion can hold a color's position <em>and</em> its ambiguity at once, the way a discrete label cannot. The RNN built on that geometry doesn't output a decision at each step; its hidden state is the reading, carried forward with memory, and read only through similarity to everything else, never through argmax. My Machine Learning Final notebook asks the harder version of the same question: does the nuance survive a completely different geometry, or was it always just a property of CIELAB? Where the two agree, that's evidence the closeness is real. Where they don't, that disagreement gets reported, not smoothed over.</p>
+<p>My Module 5 midterm answered that question with numbers before I had language for it. An Indicator Model — sixteen colors, each forced into a single one-hot anchor — scored worst: F1 = 0.457 ± 0.070. A Random Forest reading the same colors as continuous, normalized RGB predictors, letting Orange and Brown sit near each other in feature space instead of separating them by decree, scored best: F1 = 0.947 ± 0.053. The confusions the precise model was penalized for — Blue↔Violet, Brown↔Red, Black↔Brown — turned out to be real, geometric, and predictable in advance from CIELAB distance alone. They weren't noise. They were the data telling the truth about how close those colors actually are.</p>
+<p>That's the spine of everything that follows: <strong>a precise reading collapses information a nuanced reading keeps.</strong> Every method after this point is a different way of protecting that closeness instead of resolving it. The Bloch-quaternion geometry (Surov, 2022) isn't introduced as a more sophisticated way to classify color — it's introduced because a quaternion can hold a color's position <em>and</em> its ambiguity at once, the way a discrete label cannot. The RNN built on that geometry doesn't output a decision at each step; its hidden state is the reading, carried forward with memory, and read only through similarity to everything else, never through argmax. The remade Module 5 notebook asks the harder version of the same question: does the nuance survive a completely different geometry, or was it always just a property of CIELAB? Where the two agree, that's evidence the closeness is real. Where they don't, that disagreement gets reported, not smoothed over.</p>
 <p>None of this claims to know what a color <em>means</em>. It claims something narrower and more defensible: that the distance between things is information, and precision that erases distance in the name of a clean answer is a choice, not a neutral default.</p>
 </div>
 </section>
@@ -210,7 +210,7 @@ Five clusters in RGB space hint at distinct color families and their affective n
 <h2>ΔE Confusion Matrix → Quaternion Remake</h2>
 <figure style="margin:0">
 <img src="./assets/img/delta e heatmap.png" alt="Inter-class CIELAB color distance heatmap, nine classes" style="width:100%;border-radius:12px;border:1px solid var(--border)">
-<figcaption class="meta" style="margin-top:6px">Original Machine Learning midterm finding: Blue↔Violet (ΔE=29.1), Brown↔Red (44.3), Black↔Brown (46.4) read as the most confusable pairs.</figcaption>
+<figcaption class="meta" style="margin-top:6px">Original Module 5 midterm finding: Blue↔Violet (ΔE=29.1), Brown↔Red (44.3), Black↔Brown (46.4) read as the most confusable pairs.</figcaption>
 </figure>
 <p>Run the same nine classes through the Bloch-quaternion geodesic distance instead, and the picture doesn't confirm that ranking — it reorganizes it. Brown↔Orange, barely notable in CIELAB (ΔE = 79), becomes the single closest pair by a wide margin (4.0°). Black↔White, the <em>most separated</em> pair in CIELAB (ΔE = 162, the largest value in the entire matrix), collapses to 14.2° — among the closest pairs in quaternion space. Across all thirty-six pairs, the two geometries correlate at <strong>r = 0.07</strong> — essentially no linear relationship at all.</p>
 <p>That's not a failed replication. It's the geometry naming its own blind spot: this Bloch mapping reads hue as azimuthal phase, and phase is undefined for a color with no saturation. Black and white — achromatic by definition — have nowhere stable to sit on that dimension, so they drift toward the same pole regardless of how differently they read to the eye. CIELAB ΔE, built from lightness and chroma together, doesn't have that gap; this Bloch encoding, built from hue and saturation with lightness held separate as an interior radius, does.</p>
@@ -236,7 +236,7 @@ Five clusters in RGB space hint at distinct color families and their affective n
 <article class="card" style="grid-column:1/-1">
 <h2>Pathways (11)</h2>
 <p>Each pathway is a repeatable <em>trajectory</em> through color space, built by hand — colors, sequence, and meaning fixed in advance. Below you'll find the color sequence for each, an image (<code>"x pathway.png"</code>), and a summary of the trajectory of movement.</p>
-<div id="pathwaysGrid" class="grid-list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px"></div>
+<div id="pathwaysGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px"></div>
 </article>
 </div>
 </section>
@@ -248,7 +248,7 @@ Five clusters in RGB space hint at distinct color families and their affective n
 <h2>Connections (17 Traversals)</h2>
 <p>The pathways above were fixed in advance. The seventeen connections below are the same kind of object read a different way: not a fixed pathway but a <em>traversal</em>, a sequence of colors moving from one felt state toward another — curious → thoughtful, drain → rise, toussaint louverture — run through the hidden-state RNN described in the Nuance Spine rather than assigned a static reading. Each image is the quaternion trajectory the sequence actually produces: real part, imaginary part, magnitude, and phase across the steps, not an illustration of it.</p>
 <p class="meta">Live app links below point to the hosted Gradio space for that traversal; until deployment they're marked pending rather than left silently broken.</p>
-<div id="connectionsGrid" class="grid-list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px"></div>
+<div id="connectionsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px"></div>
 </article>
 </div>
 </section>
@@ -259,7 +259,7 @@ Five clusters in RGB space hint at distinct color families and their affective n
 <h2>Toussaint Louverture</h2>
 <p>The strategy named after him runs through this whole page without having been stated once until now: engage an opposing view only to its midpoint — far enough to be heard by it, never so far as to abandon the health-centered position you started from. It's not conciliation and it's not refusal. It's a specific, disciplined distance.</p>
 <p>The traversal that carries his name enacts this formally rather than describing it. Every other sequence in the Connections table moves from a starting state to a different ending state — curious to thoughtful, drain to rise. This one doesn't: black, red, green, blue, green, red — it leaves black and returns to red, passing back through green on the way. It's a cycle, not an arrival. Read against the strategy it's named for, that's not a flaw in the sequence — it's the shape of the strategy itself. Louverture's tactic was never to convert an opposing position into his own; it was to move partway toward it, hold there, and let the movement itself pull the other side closer. A traversal with a destination claims to have resolved something. A traversal that cycles back admits it's still in the reaching — a more honest formal match for a strategy that was never about winning the whole distance, only enough of it.</p>
-<p>This framing comes directly out of my CU MEDLab Community Fellowship work on governance in Haitian maroon communities, and it's named explicitly here rather than left implicit.</p>
+<p>This framing comes directly out of the CU MEDLab Community Fellowship work on governance in Haitian maroon communities, and it's named explicitly here rather than left implicit, because a method that only performs a strategy without saying what the strategy is asks a reader to reverse-engineer an argument that could just be stated. It's stated here so the rest of this page's choices — what stayed in the Literature Review untouched, what got a dedicated Validity section instead of a footnote, why the ΔE/quaternion disagreement was reported instead of resolved — can be read as instances of the same midpoint discipline, not a series of separate decisions.</p>
 <figure style="margin:16px 0 0">
 <img src="./assets/img/stoic pathway.png" alt="Quaternion trajectory for the toussaint louverture traversal: black, red, green, blue, green, red" style="width:100%;max-width:640px;border-radius:12px;border:1px solid var(--border)">
 <figcaption class="meta" style="margin-top:6px">black → red → green → blue → green → red. A cycle, not an arrival.</figcaption>
