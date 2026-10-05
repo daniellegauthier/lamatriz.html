@@ -1,3 +1,5 @@
+@font-face { font-family: 'Atkinson Hyperlegible'; src: url('./assets/fonts/AtkinsonHyperlegible-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+
 /* =========================================================
    physicalmagnetism.html — style.css
    Reference aesthetic: jila.colorado.edu/~ajsh/insidebh/
@@ -44,6 +46,8 @@ a:hover     { color: var(--link-hover); }
 h1 { font-size: 24px; font-weight: bold; margin: 12px 0 6px; }
 h2 { font-size: 20px; font-weight: bold; margin: 14px 0 4px; }
 h3 { font-size: 16px; font-weight: bold; margin: 12px 0 4px; }
+
+h1, h2, h3 { font-family: 'Atkinson Hyperlegible', Helvetica, Arial, sans-serif; }
 
 p  { margin: 0 0 10px; }
 ul { margin: 4px 0 10px 24px; padding: 0; }
