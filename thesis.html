@@ -185,11 +185,226 @@
 
 <!-- Pathways / Connections -->
 <h2 id="pathways">Pathways (11)</h2>
-<p>Each pathway is a repeatable <em>trajectory</em> through color space, built by hand — colors, sequence, and meaning fixed in advance. [[keep your existing per-pathway content here]]</p>
+<p>Each pathway is a repeatable <em>trajectory</em> through color space, built by hand — colors, sequence, and meaning fixed in advance.</p>
+
+     <script>
+  // ---------- Pathways data & render (with summaries) ----------
+  const pathways = {
+    plot: ['grey','pink','gold','nude','orange'],
+    knot: ['white','blue','green','red','black','brown','yellow','purple'],
+    pain: ['gold','orange'],
+    practical: ['yellow','green'],
+    spiritual: ['blue','brown'],
+    prayer: ['nude','white'],
+    sad: ['purple','grey','red'],
+    precise: ['pink','black'],
+    fem: ['brown','gold','orange','pink'],
+    masc: ['red','blue','orange'],
+    direct: ['red','orange'],
+  };
+
+  // Color tokens used for chips
+  const colorHex = {
+    grey:'#9aa0a6', pink:'#f472b6', gold:'#eab308', nude:'#f2d0a9', orange:'#fb923c',
+    white:'#ffffff', blue:'#60a5fa', green:'#22c55e', red:'#ef4444', black:'#111827',
+    brown:'#8b5e34', yellow:'#fde047', purple:'#a78bfa'
+  };
+
+  // Per-color sentiment/subjectivity (from your analysis)
+  const colorStats = {
+    grey:[0.50,0.77], pink:[0.62,0.88], gold:[0.00,0.00], nude:[0.55,0.95], orange:[0.95,0.95],
+    white:[0.00,0.00], blue:[0.90,0.95], green:[0.65,0.90], red:[0.45,0.55], black:[0.00,0.00],
+    brown:[0.44,0.75], yellow:[0.50,0.50], purple:[0.68,0.86]
+  };
+
+  // Full pathway summaries (ELI5-format but keeping your voice & numbers)
+  const pathwaySummaries = {
+    plot: `
+    <details open>
+      <summary><strong>Overview:</strong> 5 colors (grey→pink→gold→nude→orange). Positive progression; avg sentiment ≈ <strong>0.53</strong>.</summary>
+      <ul class="meta">
+        <li><strong>grey</strong> (0.50/0.77) — “precary” · respectful, apposite.</li>
+        <li><strong>pink</strong> (0.62/0.88) — “ambitious” · exquisite, energetic.</li>
+        <li><strong>gold</strong> (0.00/0.00) — “technocracy/lotiform”.</li>
+        <li><strong>nude</strong> (0.55/0.95) — “unextenuable” · deft, satisfied.</li>
+        <li><strong>orange</strong> (0.95/0.95) — “blurry/ artesian” · awesome.</li>
+      </ul>
+      <p class="meta"><strong>Transitions:</strong> grey→pink +0.12 · pink→gold −0.62 · gold→nude +0.55 · nude→orange +0.40.</p>
+      <p>This is an improving arc: from precarious poise to artesian brightness. A story of resolution and growth.</p>
+    </details>`,
+
+    knot: `
+    <details>
+      <summary><strong>Overview:</strong> 8 colors (white→blue→green→red→black→brown→yellow→purple). Gentle uplift; avg sentiment ≈ <strong>0.45</strong>.</summary>
+      <ul class="meta">
+        <li>white (0.00/0.00) — “analeptical”.</li>
+        <li>blue (0.90/0.95) — “photopathy” · intelligent, deep.</li>
+        <li>green (0.65/0.90) — “bulbous/heroic” · balanced growth.</li>
+        <li>red (0.45/0.55) — “apophantic” · candid, radiant.</li>
+        <li>black (0.00/0.00) — “swabble”.</li>
+        <li>brown (0.44/0.75) — notable, earthy.</li>
+        <li>yellow (0.50/0.50) — authority, plausible.</li>
+        <li>purple (0.68/0.86) — brave, imaginative.</li>
+      </ul>
+      <p class="meta"><strong>Transitions:</strong> white→blue +0.90 · blue→green −0.25 · green→red −0.20 · red→black −0.45 · black→brown +0.44 · brown→yellow +0.06 · yellow→purple +0.18.</p>
+      <p>A knot you travel through: light→knowledge→challenge→dark→earth→civic→imagination. Perseverance into creative resolve.</p>
+    </details>`,
+
+    pain: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (gold→orange). Strong positive jump; avg sentiment ≈ <strong>0.47</strong>.</summary>
+      <ul class="meta">
+        <li>gold (0.00/0.00) — technocracy/lotiform.</li>
+        <li>orange (0.95/0.95) — artesian/awesome.</li>
+      </ul>
+      <p class="meta"><strong>Transition:</strong> gold→orange +0.95 (strong positive).</p>
+      <p>From institutional hardness to warm vitality. Naming pain → releasing pressure → choosing warmth.</p>
+    </details>`,
+
+    practical: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (yellow→green). Steady uplift; avg sentiment ≈ <strong>0.57</strong>.</summary>
+      <ul class="meta">
+        <li>yellow (0.50/0.50) — redressible authority.</li>
+        <li>green (0.65/0.90) — heroic balance.</li>
+      </ul>
+      <p class="meta"><strong>Transition:</strong> +0.15 (positive).</p>
+      <p>From clarity/decision to grounded growth. A pragmatic ritual pathway.</p>
+    </details>`,
+
+    spiritual: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (blue→brown). Downshift; avg sentiment ≈ <strong>0.67</strong>.</summary>
+      <ul class="meta">
+        <li>blue (0.90/0.95) — intelligent calm.</li>
+        <li>brown (0.44/0.75) — notable, earthy.</li>
+      </ul>
+      <p class="meta"><strong>Transition:</strong> −0.46 (strong negative).</p>
+      <p>From vast sky to soil. An invitation to groundness and limits—devotional, not depressive.</p>
+    </details>`,
+
+    prayer: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (nude→white). Downshift; avg sentiment ≈ <strong>0.28</strong>.</summary>
+      <ul class="meta">
+        <li>nude (0.55/0.95) — deft, satisfied.</li>
+        <li>white (0.00/0.00) — analeptical neutrality.</li>
+      </ul>
+      <p class="meta"><strong>Transition:</strong> −0.55 (strong negative).</p>
+      <p>A quieting: from embodied warmth to blank clarity. A clearing before the next act.</p>
+    </details>`,
+
+    sad: `
+    <details>
+      <summary><strong>Overview:</strong> 3 colors (purple→grey→red). Downshift; avg sentiment ≈ <strong>0.54</strong>.</summary>
+      <ul class="meta">
+        <li>purple (0.68/0.86) — brave imagination.</li>
+        <li>grey (0.50/0.77) — precarity, restraint.</li>
+        <li>red (0.45/0.55) — candid heat.</li>
+      </ul>
+      <p class="meta"><strong>Transitions:</strong> purple→grey −0.18 · grey→red −0.05.</p>
+      <p>From courageous vision to grounded heaviness to honest heat. A grief-to-truth arc.</p>
+    </details>`,
+
+    precise: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (pink→black). Sharp downshift; avg sentiment ≈ <strong>0.31</strong>.</summary>
+      <ul class="meta">
+        <li>pink (0.62/0.88) — ambitious, exquisite.</li>
+        <li>black (0.00/0.00) — swabble (null).</li>
+      </ul>
+      <p class="meta"><strong>Transition:</strong> −0.62 (strong negative).</p>
+      <p>From flourish to void. A precise cut that ends rumination—use when you need a hard stop.</p>
+    </details>`,
+
+    fem: `
+    <details>
+      <summary><strong>Overview:</strong> 4 colors (brown→gold→orange→pink). Stable overall; avg sentiment ≈ <strong>0.50</strong>.</summary>
+      <ul class="meta">
+        <li>brown (0.44/0.75) → gold (0.00/0.00) → orange (0.95/0.95) → pink (0.62/0.88)</li>
+      </ul>
+      <p class="meta"><strong>Transitions:</strong> brown→gold −0.44 · gold→orange +0.95 · orange→pink −0.32.</p>
+      <p>Earth → institution → flame → flourish. A cyclical, fertile cadence.</p>
+    </details>`,
+
+    masc: `
+    <details>
+      <summary><strong>Overview:</strong> 3 colors (red→blue→orange). Upward; avg sentiment ≈ <strong>0.77</strong>.</summary>
+      <ul class="meta">
+        <li>red (0.45/0.55) → blue (0.90/0.95) → orange (0.95/0.95)</li>
+      </ul>
+      <p class="meta"><strong>Transitions:</strong> red→blue +0.45 · blue→orange +0.05.</p>
+      <p>Heat → clarity → radiance. A decisive, generative trajectory.</p>
+    </details>`,
+
+    direct: `
+    <details>
+      <summary><strong>Overview:</strong> 2 colors (red→orange). Upward; avg sentiment ≈ <strong>0.70</strong>.</summary>
+      <ul class="meta">
+        <li>red (0.45/0.55) → orange (0.95/0.95)</li>
+    <p>In an age where mental health systems like the DSM-V increasingly pathologize behavior, human suffering is reduced to risk metrics — stripped from the historical and emotional ecosystems in which it arises. Our data and mental health systems often surveil rather than understand, treating distress as deviation or consumable opportunity, rather than signal of social rupture.</p>
+
+
+  function chip(color){
+    const hex = colorHex[color] || '#888';
+    const el = document.createElement('span');
+    el.title = color;
+    Object.assign(el.style, {
+      display:'inline-block', width:'18px', height:'18px', borderRadius:'6px',
+      border:'1px solid var(--border)', background:hex, boxShadow:'inset 0 0 0 1px rgba(0,0,0,.08)', marginRight:'6px'
+    });
+    el.setAttribute('aria-label', `${color} swatch`);
+    return el;
+  }
+    </div>
+
+  function statBadge(name){
+    const s = colorStats[name];
+    if(!s) return '';
+    return `<span class="meta" style="margin-left:6px;color:var(--muted)">S:${s[0].toFixed(2)} · Subj:${s[1].toFixed(2)}</span>`;
+  }
+    <hr>
+
+  function renderPathways(){
+    const grid = document.getElementById('pathwaysGrid');
+    if(!grid) return;
+    Object.entries(pathways).forEach(([name, seq]) => {
+      const card = document.createElement('article');
+      card.className = 'card';
+
+      const h = document.createElement('h3');
+      h.innerHTML = `${name} pathway ${statBadge(seq[0])}`;
+      card.appendChild(h);
+
+      const chips = document.createElement('div');
+      chips.style.display = 'flex';
+      chips.style.flexWrap = 'wrap';
+      chips.style.gap = '6px';
+      chips.style.margin = '6px 0 10px';
+      seq.forEach(c => chips.appendChild(chip(c)));
+      card.appendChild(chips);
+
+      const img = document.createElement('img');
+      img.src = `./assets/img/${encodeURIComponent(name + ' pathway.png')}`;
+      img.alt = `${name} pathway diagram`;
+      Object.assign(img.style, { width:'100%', borderRadius:'12px', border:'1px solid var(--border)' });
+      img.loading = 'lazy';
+      img.onerror = () => { img.alt = `${name} pathway diagram (image pending)`; img.style.background = 'linear-gradient(135deg,#6EE7F2,#B983FF)'; img.style.height = '180px'; };
+      card.appendChild(img);
+
+      const p = document.createElement('div');
+      p.className = 'summary';
+      p.innerHTML = pathwaySummaries[name] || '<em>Summary coming soon.</em>';
+      card.appendChild(p);
+
+      grid.appendChild(card);
+    });
+  }
+         </script>
 
 <h2 id="connections">Connections (17 Traversals)</h2>
 <p>The pathways above were fixed in advance. The seventeen connections below are the same kind of object read a different way: not a fixed pathway but a <em>traversal</em>, a sequence of colors moving from one felt state toward another — curious → thoughtful, drain → rise, toussaint louverture — run through the hidden-state RNN described in the Nuance Spine rather than assigned a static reading. Each image is the quaternion trajectory the sequence actually produces: real part, imaginary part, magnitude, and phase across the steps, not an illustration of it.</p>
-<p>Live app links below point to the hosted Gradio space for that traversal; until deployment they're marked pending rather than left silently broken.</p>
+
 
 <hr>
 
