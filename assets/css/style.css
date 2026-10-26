@@ -674,6 +674,7 @@ hr.sep { border: 0; height: 1px; background: var(--border); margin: 12px 0; }
 body.poetic main { max-width: 760px; }
 body.poetic main p,
 body.poetic main td { font-size: 18px; line-height: 1.6; }
+body.poetic main p.meta { font-size: 12px; line-height: 1.5; }
 
 /* Typewriter voice */
 .tt { font-family: var(--mono); letter-spacing: .02em; }
