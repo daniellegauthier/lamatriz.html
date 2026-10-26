@@ -11,43 +11,21 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="./assets/img/la matriz root only.png" type="image/x-icon">
 <style>
-/* Home — same concrete-poetry gestures as the Method page over the site's accessible base.
-   Garnier: letter-spaced words · Schendel: ruled grid, inked squares · Howe: centered block with room
-   Philip / Ladik: one scattered line, decorative only (hidden from screen readers) */
-:root { --mono: 'Courier New', Courier, monospace; }
-.tt { font-family: var(--mono); letter-spacing: .02em; }
-main { max-width: 760px; }
-main p { font-size: 18px; line-height: 1.6; }
-.title-spaced { font-family: var(--mono); font-weight: normal; letter-spacing: .5em; font-size: 26px; margin: 18px 0 6px; }
-.scatter { font-family: var(--mono); color: var(--muted); font-size: 15px; line-height: 2.2; margin: 6px 0 4px; }
-.scatter span { display: inline-block; }
-.lead { font-size: 20px; margin: 14px 0 0; }
-.howe { max-width: 36ch; margin: 22px auto 26px; font-size: 20px !important; line-height: 1.7; }
-.ruled { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; margin: 14px 0; }
+/* Home — page-specific rules; the shared poetic layer lives in assets/css/style.css */
 .picker label { display: block; margin-bottom: 6px; }
 #pathway-select { width: 100%; max-width: 380px; padding: 8px; background: var(--bg); border: 1px solid var(--border); font-family: var(--mono); font-size: 15px; min-height: 40px; }
-.dials { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 14px 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
-.dials label { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); font-family: var(--mono); letter-spacing: .3em; font-size: 14px; }
-.dials input[type=range] { width: 100%; accent-color: var(--accent); }
+.dials { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 14px 0; }
+.dials label { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; font-family: var(--mono); letter-spacing: .3em; font-size: 14px; }
+.dials input[type=range] { width: 100%; }
 .dials input[type=number] { font-family: var(--mono); background: var(--bg); border: 1px solid var(--border); padding: 4px 6px; letter-spacing: 0; }
 .dials .meta { font-family: var(--mono); letter-spacing: 0; font-style: normal; }
 .actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.actions button { font-family: var(--mono); font-size: 14px; background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 8px 14px; min-height: 40px; cursor: pointer; }
-.actions button#gen { background: var(--text); color: var(--bg); font-weight: normal !important; letter-spacing: .1em; }
 .actions a { font-family: var(--mono); font-size: 14px; }
-.actions button:focus-visible, .actions a:focus-visible, #pathway-select:focus-visible, .dials input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 #sequence { margin-top: 14px !important; }
-#log { margin-top: 10px; padding: 10px 0 0; line-height: 1.5; overflow-x: auto; font-family: var(--mono); background: none; border: none; border-top: 2px solid var(--text); padding-left: 0; white-space: pre; font-size: 13px; max-width: 100%; }
-main { min-width: 0; }
-.promise { font-family: var(--mono); font-size: 14px !important; color: var(--muted); }
-@media (max-width: 640px) {
-  main { width: 100%; max-width: 100%; }
-  .title-spaced { letter-spacing: .3em; font-size: 22px; }
-  .howe { font-size: 18px !important; }
-}
+#log { margin-top: 10px; padding: 10px 0 0; line-height: 1.5; overflow-x: auto; font-family: var(--mono); background: none; border: none; border-top: 2px solid var(--text); white-space: pre; font-size: 13px; max-width: 100%; }
 </style>
 </head>
-<body>
+<body class="poetic">
 <div class="page-wrap">
 
 <header>
@@ -123,7 +101,7 @@ main { min-width: 0; }
 
 <!-- 8 · orange · hit → drop — Light · Closeness · Friction · Rest
      (element ids kept so the engine below stays wired) -->
-<div class="dials">
+<div class="dials ruled-grid">
 <label>Light <input id="mass" type="range" min="-1" max="1" step="0.05" value="0.15"> <span class="meta" id="massVal">0.15</span></label>
 <label>Closeness <input id="voltage" type="range" min="0" max="1" step="0.05" value="0.20"> <span class="meta" id="voltageVal">0.20</span></label>
 <label>Friction <input id="charge" type="range" min="0.1" max="2.0" step="0.05" value="1.45"> <span class="meta" id="chargeVal">1.45</span></label>
@@ -133,8 +111,8 @@ main { min-width: 0; }
 </div>
 
 <div class="actions">
-<button id="gen" style="font-weight:bold;">Draw the path</button>
-<button id="clear">Clear</button>
+<button id="gen" class="btn-tt ink">Draw the path</button>
+<button id="clear" class="btn-tt">Clear</button>
 <a href="#" id="exportJson" class="meta">save as JSON</a>
 </div>
 
