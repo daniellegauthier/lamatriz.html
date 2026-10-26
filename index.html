@@ -11,12 +11,40 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="./assets/img/la matriz root only.png" type="image/x-icon">
 <style>
-  .dials { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px 24px; margin:12px 0; }
-  .dials label { display:flex; flex-direction:column; gap:4px; }
-  .dials input[type=range] { width:100%; }
-  #pathway-select { width:100%; max-width:360px; padding:6px; margin:8px 0 4px; }
-  .actions { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
-  #log { margin-top:8px; line-height:1.4; overflow-x:auto; font-family:monospace; }
+/* Home — same concrete-poetry gestures as the Method page over the site's accessible base.
+   Garnier: letter-spaced words · Schendel: ruled grid, inked squares · Howe: centered block with room
+   Philip / Ladik: one scattered line, decorative only (hidden from screen readers) */
+:root { --mono: 'Courier New', Courier, monospace; }
+.tt { font-family: var(--mono); letter-spacing: .02em; }
+main { max-width: 760px; }
+main p { font-size: 18px; line-height: 1.6; }
+.title-spaced { font-family: var(--mono); font-weight: normal; letter-spacing: .5em; font-size: 26px; margin: 18px 0 6px; }
+.scatter { font-family: var(--mono); color: var(--muted); font-size: 15px; line-height: 2.2; margin: 6px 0 4px; }
+.scatter span { display: inline-block; }
+.lead { font-size: 20px; margin: 14px 0 0; }
+.howe { max-width: 36ch; margin: 22px auto 26px; font-size: 20px !important; line-height: 1.7; }
+.ruled { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; margin: 14px 0; }
+.picker label { display: block; margin-bottom: 6px; }
+#pathway-select { width: 100%; max-width: 380px; padding: 8px; background: var(--bg); border: 1px solid var(--border); font-family: var(--mono); font-size: 15px; min-height: 40px; }
+.dials { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 14px 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.dials label { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); font-family: var(--mono); letter-spacing: .3em; font-size: 14px; }
+.dials input[type=range] { width: 100%; accent-color: var(--accent); }
+.dials input[type=number] { font-family: var(--mono); background: var(--bg); border: 1px solid var(--border); padding: 4px 6px; letter-spacing: 0; }
+.dials .meta { font-family: var(--mono); letter-spacing: 0; font-style: normal; }
+.actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.actions button { font-family: var(--mono); font-size: 14px; background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 8px 14px; min-height: 40px; cursor: pointer; }
+.actions button#gen { background: var(--text); color: var(--bg); font-weight: normal !important; letter-spacing: .1em; }
+.actions a { font-family: var(--mono); font-size: 14px; }
+.actions button:focus-visible, .actions a:focus-visible, #pathway-select:focus-visible, .dials input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#sequence { margin-top: 14px !important; }
+#log { margin-top: 10px; padding: 10px 0 0; line-height: 1.5; overflow-x: auto; font-family: var(--mono); background: none; border: none; border-top: 2px solid var(--text); padding-left: 0; white-space: pre; font-size: 13px; max-width: 100%; }
+main { min-width: 0; }
+.promise { font-family: var(--mono); font-size: 14px !important; color: var(--muted); }
+@media (max-width: 640px) {
+  main { width: 100%; max-width: 100%; }
+  .title-spaced { letter-spacing: .3em; font-size: 22px; }
+  .howe { font-size: 18px !important; }
+}
 </style>
 </head>
 <body>
@@ -40,11 +68,12 @@
 <main>
 
 <!-- 3 · magenta · it → matter -->
-<h1>La Matriz</h1>
-<h3>Lead with what you want to preserve or protect.</h3>
+<h1 class="title-spaced">La Matriz</h1>
+<p class="scatter" aria-hidden="true"><span>l i g h t</span>&emsp;&emsp;<span>c l o s e n e s s</span>&emsp;<span>f r i c t i o n</span>&emsp;&emsp;&emsp;<span>r e s t</span></p>
+<h3 class="lead">Lead with what you want to preserve or protect.</h3>
 
 <!-- 4 · nude · approach → jump -->
-<p>Semantic Color Math can support you to organize and define relations around your system at whatever stage, to negotiate and enliven your goals and surroundings on your own terms.</p>
+<p class="howe">Semantic Color Math can support you to organize and define relations around your system at whatever stage, to negotiate and enliven your goals and surroundings on your own terms.</p>
 
 <hr>
 
@@ -52,7 +81,7 @@
 <h2>How can you make new rules from existing ones?</h2>
 
 <!-- 6 · cyan · act → self -->
-<p><label for="pathway-select">Select your pathway to find what categories create space for your needs.</label><br>
+<p class="picker"><label for="pathway-select">Select your pathway to find what categories create space for your needs.</label>
 <select id="pathway-select">
 <option value="">— choose a pathway —</option>
 <optgroup label="sequences">
@@ -90,7 +119,7 @@
 </select></p>
 
 <!-- 7 · black · order → scale -->
-<p class="meta">Choose a pathway with repetition to hold an opening when closure threatens.</p>
+<p class="ruled">Choose a pathway with repetition to hold an opening when closure threatens.</p>
 
 <!-- 8 · orange · hit → drop — Light · Closeness · Friction · Rest
      (element ids kept so the engine below stays wired) -->
@@ -113,12 +142,12 @@
 <pre id="log" class="meta"></pre>
 
 <!-- 9 · white · hope → block -->
-<p class="meta">I care about your privacy. My web apps do not collect your data. What you type stays with you.</p>
+<p class="promise">I care about your privacy. My web apps do not collect your data. What you type stays with you.</p>
 
 <hr>
 
 <!-- 10 · purple · free → cheer -->
-<p>You already carry the data. Place it where it belongs to you. Lead with what you want to preserve or protect.
+<p class="howe">You already carry the data. Place it where it belongs to you. Lead with what you want to preserve or protect.
 &nbsp; <a href="/lamatriz.html/consulting">Consult with me →</a></p>
 
 <hr>
