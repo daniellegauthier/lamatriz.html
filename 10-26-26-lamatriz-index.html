@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Matriz - color math for planting belonging</title>
+<meta name="description" content="Name what you feel, sort it with color, and find the relations that let you belong.">
+<meta property="og:title" content="La Matriz - color math for planting belonging">
+<meta property="og:description" content="Name what you feel, sort it with color, and find the relations that let you belong.">
+<link rel="canonical" href="https://daniellegauthier.github.io/lamatriz.html/">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="./assets/img/la matriz root only.png" type="image/x-icon">
+<style>
+  .dials { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px 24px; margin:12px 0; }
+  .dials label { display:flex; flex-direction:column; gap:4px; }
+  .dials input[type=range] { width:100%; }
+  #pathway-select { width:100%; max-width:360px; padding:6px; margin:8px 0 4px; }
+  .actions { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  #log { margin-top:8px; line-height:1.4; overflow-x:auto; font-family:monospace; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<header>
+<a class="logo" href="/lamatriz.html/">
+<img src="./assets/img/la matriz root only.png" alt="La Matriz logo">
+<span>lamatriz.html</span>
+</a>
+<ul id="primaryNav">
+<li><strong>Home</strong></li>
+<li><a href="/lamatriz.html/method">Method</a></li>
+<li><a href="/lamatriz.html/consulting">Consulting</a></li>
+<li><a href="/lamatriz.html/thesis">Thesis</a></li>
+<li><a href="/lamatriz.html/socials">Socials</a></li>
+<li><a href="/lamatriz.html/contact">Contact</a></li>
+</ul>
+</header>
+
+<main>
+
+<!-- 3 · magenta · it → matter -->
+<h1>La Matriz</h1>
+<h3>This schema will prepare you for relation.</h3>
+
+<!-- 4 · nude · approach → jump -->
+<p>If you have a practice but you’re feeling out of place, La Matriz’s Semantic Color Math can support you to organize and define relations around your existing system to negotiate your goals and surroundings on your own terms.</p>
+
+<hr>
+
+<!-- 5 · gold · pull → hide -->
+<h2>Lead with what you want to preserve or protect</h2>
+
+<!-- 6 · cyan · act → self -->
+<p><label for="pathway-select">Select your pathway to find what categories create space for your needs.</label><br>
+<select id="pathway-select">
+<option value="">— choose a pathway —</option>
+<option value="brown, gold, orange, pink">curious to thoughtful</option>
+<option value="red, blue, gold, purple">angry to soft</option>
+<option value="purple, red, orange">soft to protective</option>
+<option value="red, brown, grey">intelligent to hesitant</option>
+<option value="green, grey, nude, red, purple">lost to open</option>
+<option value="purple, orange, pink">joy to new</option>
+<option value="pink, nude, orange, purple, red">distrust to thoughtful</option>
+<option value="purple, pink, yellow, red">happy to resistant</option>
+<option value="grey, brown, nude">productive to messy</option>
+<option value="black, red, white">strict to neutral</option>
+<option value="brown, pink, gold, purple, nude, blue">drain to rise</option>
+<option value="grey, green, black, yellow">attached to objective</option>
+<option value="orange, red, yellow, purple, orange">stuck to escape</option>
+<option value="white, red, green, purple, orange">sad to abundant</option>
+<option value="yellow, brown, green">cocky to observant</option>
+<option value="magenta, pink, green, blue, teal">it to self</option>
+<option value="black, red, green, blue, green, red">toussaint louverture</option>
+</select></p>
+
+<!-- 7 · black · order → scale -->
+<p class="meta">Choose a pathway with repetition to hold an opening when closure threatens.</p>
+
+<!-- 8 · orange · hit → drop — Light · Closeness · Friction · Rest
+     (element ids kept so the engine below stays wired) -->
+<div class="dials">
+<label>Light <input id="mass" type="range" min="-1" max="1" step="0.05" value="0.15"> <span class="meta" id="massVal">0.15</span></label>
+<label>Closeness <input id="voltage" type="range" min="0" max="1" step="0.05" value="0.20"> <span class="meta" id="voltageVal">0.20</span></label>
+<label>Friction <input id="charge" type="range" min="0.1" max="2.0" step="0.05" value="1.45"> <span class="meta" id="chargeVal">1.45</span></label>
+<label>Rest <input id="nulltime" type="range" min="0" max="0.9" step="0.05" value="0.65"> <span class="meta" id="nullVal">0.65</span></label>
+<label>Length <input id="length" type="range" min="4" max="32" step="1" value="9"> <span class="meta" id="lenVal">9</span></label>
+<label>Seed <input id="seed" type="number" value="999" step="1" min="0" max="99999" style="width:80px"></label>
+</div>
+
+<div class="actions">
+<button id="gen" style="font-weight:bold;">Draw the path</button>
+<button id="clear">Clear</button>
+<a href="#" id="exportJson" class="meta">save as JSON</a>
+</div>
+
+<div id="sequence" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:3px;" aria-live="polite"></div>
+<pre id="log" class="meta"></pre>
+
+<!-- 9 · white · hope → block -->
+<p class="meta">I care about your privacy. My web apps do not collect your data. What you type stays with you.</p>
+
+<hr>
+
+<!-- 10 · purple · free → cheer -->
+<p>You already carry the data. Place it where it belongs to you. This schema will prepare you for relation.
+&nbsp; <a href="/lamatriz.html/consulting">Consult with me →</a></p>
+
+<hr>
+<ul id="footerNav" style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0;">
+<li><a href="/lamatriz.html/">Home</a></li>
+<li><a href="/lamatriz.html/method">&nbsp;· Method</a></li>
+<li><a href="/lamatriz.html/consulting">&nbsp;· Consulting</a></li>
+<li><a href="/lamatriz.html/thesis">&nbsp;· Thesis</a></li>
+<li><a href="/lamatriz.html/socials">&nbsp;· Socials</a></li>
+<li><a href="/lamatriz.html/contact">&nbsp;· Contact</a></li>
+</ul>
+<p class="meta">© <span id="y"></span> La Matriz</p>
+
+</main>
+</div>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+
+/* ---------- core arithmetic helpers ---------- */
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+function seededGen(seed){ let s = seed>>>0 || 1; return () => (s = (s*1664525 + 1013904223)>>>0) / 4294967296; }
+function rgbToHsv(r,g,b){
+r/=255; g/=255; b/=255;
+const mx=Math.max(r,g,b), mn=Math.min(r,g,b), d=mx-mn;
+let h=0;
+if(d!==0){ if(mx===r) h=((g-b)/d)%6; else if(mx===g) h=(b-r)/d+2; else h=(r-g)/d+4; h*=60; if(h<0) h+=360; }
+return [h, mx===0?0:d/mx, mx];
+}
+function hsvToRgb(h,s,v){
+h=(h%360+360)%360; const c=v*s, x=c*(1-Math.abs((h/60)%2-1)), m=v-c;
+let [r,g,b]=[0,0,0];
+if(h<60)[r,g,b]=[c,x,0]; else if(h<120)[r,g,b]=[x,c,0]; else if(h<180)[r,g,b]=[0,c,x];
+else if(h<240)[r,g,b]=[0,x,c]; else if(h<300)[r,g,b]=[x,0,c]; else [r,g,b]=[c,0,x];
+return [Math.round((r+m)*255),Math.round((g+m)*255),Math.round((b+m)*255)];
+}
+function applySaturation([r,g,b], satCoeff){
+const [h,s,v]=rgbToHsv(r,g,b);
+return hsvToRgb(h, clamp(s*(1+0.75*satCoeff),0,1), clamp(v*(1+0.50*satCoeff),0,1));
+}
+function jaccard(a,b){ const A=new Set(a),B=new Set(b); const U=new Set([...A,...B]).size; const I=[...A].filter(x=>B.has(x)).length; return U?I/U:0; }
+function hex(c){ return '#'+c.map(v=>v.toString(16).padStart(2,'0')).join(''); }
+
+/* ---------- 15-node array structure with GNH Indicators (la matrice, incl. cyan + magenta) ---------- */
+const SEM = [
+{name:'grey', rgb:[170,170,170], sent:0.50, words:['precary','apposite'], gnh:'Economic Wellness'},
+{name:'pink', rgb:[250,0,90], sent:0.62, words:['ambitious','exquisite'], gnh:'Mental Wellness'},
+{name:'gold', rgb:[250,200,0], sent:0.00, words:['technocracy','lotiform'], gnh:'Workplace Wellness'},
+{name:'nude', rgb:[250,180,120], sent:0.55, words:['unextenuable','deft'], gnh:'Physical Wellness'},
+{name:'orange', rgb:[250,110,0], sent:0.95, words:['blurry','artesian'], gnh:'Social Wellness'},
+{name:'white', rgb:[255,255,255], sent:0.00, words:['analeptical'], gnh:'Political Wellness'},
+{name:'blue', rgb:[0,0,255], sent:0.90, words:['photopathy','intelligent'], gnh:'Environmental Wellness'},
+{name:'green', rgb:[0,255,0], sent:0.65, words:['bulbous','heroic'], gnh:'Ecological Diversity'},
+{name:'red', rgb:[255,0,0], sent:0.45, words:['apophantic','candid'], gnh:'Health'},
+{name:'black', rgb:[0,0,0], sent:0.00, words:['swabble'], gnh:'Good Governance'},
+{name:'brown', rgb:[180,50,0], sent:0.44, words:['notable','submissive'], gnh:'Education'},
+{name:'yellow', rgb:[255,255,0], sent:0.50, words:['authority'], gnh:'Living Standards'},
+{name:'purple', rgb:[180,50,255], sent:0.68, words:['brave','imaginative'], gnh:'Cultural Diversity'},
+{name:'cyan', rgb:[0,255,255], sent:0.70, words:['act','self'], gnh:'Confidence'},
+{name:'magenta', rgb:[255,0,255], sent:0.60, words:['it','matter'], gnh:'Aesthetic'}
+];
+const ALIASES = {teal:'cyan', gray:'grey', beige:'nude', violet:'purple'};
+function findColor(name){ const n=String(name).trim().toLowerCase(); return SEM.findIndex(c=>c.name===(ALIASES[n]||n)); }
+function mixRgb(a,b,f){ return a.map((v,i)=>Math.round(v+(b[i]-v)*f)); }
+function nearestNode(rgb){ let best=0,bd=Infinity; SEM.forEach((c,i)=>{ const d=c.rgb.reduce((s,v,k)=>s+(v-rgb[k])**2,0); if(d<bd){bd=d;best=i;} }); return best; }
+const maxAbs = Math.max(...SEM.map(s=>Math.abs(s.sent)));
+SEM.forEach(s=>s.sentN = maxAbs ? (s.sent/maxAbs) : 0);
+
+function nodeSimilarity(i,j,alpha=0.6){
+const ds = Math.abs(SEM[i].sentN - SEM[j].sentN);
+return alpha*(1-ds) + (1-alpha)*jaccard(SEM[i].words, SEM[j].words);
+}
+function fetchNeutrals(){
+const targetSet = new Set(['grey','gray','white','nude','beige']);
+let idx = SEM.map((c,i)=>targetSet.has(c.name)?i:-1).filter(i=>i>=0);
+if(!idx.length){ const ordered=SEM.map((c,i)=>[i,Math.abs(c.sentN)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]); idx=ordered.slice(0,5); }
+return idx;
+}
+function computeNextNode(cur, resistance, rng){
+const sims = SEM.map((_,j)=>nodeSimilarity(cur,j));
+const dist = sims.map(s=>1-Math.max(0,Math.min(1,s)));
+const matrixWeight = dist.map((d,k)=>k===cur?0:resistance/Math.max(d,1e-3));
+const wSum = matrixWeight.reduce((a,b)=>a+Math.max(0,b),0);
+if(wSum===0) return Math.floor(rng()*SEM.length);
+let r = rng()*wSum;
+for(let j=0;j<matrixWeight.length;j++){ r-=Math.max(0,matrixWeight[j]); if(r<=0) return j; }
+return SEM.length-1;
+}
+function generateSequence({length=11, seed=7, satCoeff=0.15, optimization=0.2, resistance=1.45, delayCoeff=0.65, colorArray=null}={}){
+const rng = seededGen(seed);
+const neutrals = fetchNeutrals();
+const sequenceOut = [];
+if (colorArray && colorArray.length > 0) {
+// Deterministic traversal: the named colors stay in order; the sliders shape what happens between them.
+//  Node Resistance  -> contrasting neighbours need more bridge steps to cross
+//  Path Optimization-> bridges snap to the nearest la matrice color (high) or stay raw blends (low)
+//  Dynamic Delays   -> chance of a neutral pause after each color (Seed makes it repeatable)
+//  Path Length Limit-> the path is compressed to fit, keeping first and last color
+const idxs = colorArray.map(findColor).filter(i=>i>=0);
+const missing = colorArray.filter(c=>findColor(c)<0).map(c=>c.trim());
+const push = (row, extra={}) => sequenceOut.push({t:sequenceOut.length, name:row.name, base_rgb:row.rgb.slice(), rgb:applySaturation(row.rgb, extra.rest?satCoeff*0.2:satCoeff), sentiment:row.sent, words:row.words, gnh:row.gnh, ...extra});
+idxs.forEach((cur, k) => {
+  push(SEM[cur]);
+  const nxt = idxs[k+1];
+  if(nxt !== undefined){
+    const dissim = 1 - nodeSimilarity(cur, nxt);
+    const bridges = Math.round(dissim * resistance * 2);
+    for(let b=1; b<=bridges; b++){
+      const f = b/(bridges+1);
+      const raw = mixRgb(SEM[cur].rgb, SEM[nxt].rgb, f);
+      if(optimization >= 0.5){
+        const n = nearestNode(raw);
+        const last=sequenceOut[sequenceOut.length-1]; if(n!==cur && n!==nxt && last.name!==SEM[n].name) push(SEM[n], {bridge:true});
+      } else {
+        sequenceOut.push({t:sequenceOut.length, name:SEM[cur].name+'→'+SEM[nxt].name, base_rgb:raw, rgb:applySaturation(raw, satCoeff), sentiment:(SEM[cur].sent+SEM[nxt].sent)/2, words:[], gnh:'bridge', bridge:true});
+      }
+    }
+  }
+  const delayProbability = delayCoeff * (1 - Math.abs(SEM[cur].sentN));
+  if(nxt !== undefined && rng() < delayProbability){
+    const ni = neutrals[Math.floor(rng() * neutrals.length)];
+    push(SEM[ni], {rest:true});
+  }
+});
+// compress to the length limit, always keeping the named colors before bridges/pauses
+while(sequenceOut.length > length){
+  let drop = sequenceOut.findIndex(s=>s.rest);
+  if(drop<0) drop = sequenceOut.findIndex(s=>s.bridge);
+  if(drop<0) break;
+  sequenceOut.splice(drop,1);
+}
+sequenceOut.missing = missing;
+} else {
+// Fallback Dynamic Engine Path Calculation
+let cur = SEM.map((c,i)=>[i,Math.abs(c.sentN)]).sort((a,b)=>a[1]-b[1])[0][0];
+for(let t=0; t<length; t++){
+const row = SEM[cur];
+sequenceOut.push({t, name:row.name, base_rgb:row.rgb.slice(), rgb:applySaturation(row.rgb, satCoeff), sentiment:row.sent, words:row.words, gnh:row.gnh});
+const delayProbability = delayCoeff * (1 - Math.abs(row.sentN));
+if(rng() < delayProbability){
+const ni = neutrals[Math.floor(rng() * neutrals.length)];
+const nrow = SEM[ni];
+sequenceOut.push({t:t+0.5, name:nrow.name, base_rgb:nrow.rgb.slice(), rgb:applySaturation(nrow.rgb, satCoeff*0.2), sentiment:nrow.sent, words:nrow.words, gnh:nrow.gnh, rest:true});
+}
+cur = computeNextNode(cur, resistance * (1 + 0.4 * optimization), rng);
+}
+}
+return sequenceOut;
+}
+
+/* ---------- UI Event Wiring ---------- */
+const el = id => document.getElementById(id);
+const seqEl=el('sequence'), logEl=el('log');
+const mass=el('mass'), voltage=el('voltage'), charge=el('charge'), nulltime=el('nulltime'),
+len=el('length'), seed=el('seed'), pathwaySelect=el('pathway-select');
+function syncControlLabels(){
+el('massVal').textContent=Number(mass.value).toFixed(2);
+el('voltageVal').textContent=Number(voltage.value).toFixed(2);
+el('chargeVal').textContent=Number(charge.value).toFixed(2);
+el('nullVal').textContent=Number(nulltime.value).toFixed(2);
+el('lenVal').textContent=String(len.value);
+}
+['input','change'].forEach(evt=>[mass,voltage,charge,nulltime,len,seed].forEach(c=>c.addEventListener(evt,()=>{ syncControlLabels(); if(activeSequence) processTraversal(); })));
+pathwaySelect.addEventListener('change', processTraversal);
+syncControlLabels();
+
+let activeSequence = null;
+function renderOutput(seq){
+activeSequence = seq;
+seqEl.innerHTML = '';
+seq.forEach((s,i)=>{
+const cell = document.createElement('div');
+cell.style.cssText = `width:44px;height:44px;border:1px solid #594E39;background:${hex(s.rgb)};display:flex;align-items:flex-end;padding:2px;flex-shrink:0;`;
+cell.title = `${i+1} — ${s.name}${s.rest?' (delay focus)':''} — [${s.gnh}] — ${hex(s.rgb)}`;
+const cap = document.createElement('span');
+cap.textContent = `${i+1}`;
+cap.style.cssText = 'font-size:9px;font-family:monospace;color:rgba(255,255,255,0.75);mix-blend-mode:difference;';
+cell.appendChild(cap);
+seqEl.appendChild(cell);
+});
+logEl.textContent = seq.map((s,i)=>{
+const steps = `${String(i + 1).padStart(2, '0')}. `;
+const colorTag = `${s.name.toUpperCase().padEnd(7)}`;
+const modeTag = s.rest ? ` [Dynamic Delay] ` : s.bridge ? ` [Bridge]        ` : ` [Active Node]  `;
+const indicatorTag = `Indicator: ${s.gnh.padEnd(23)}`;
+const colorHex = ` ${hex(s.rgb)}`;
+return steps + colorTag + modeTag + indicatorTag + colorHex;
+}).join('\n') + (seq.missing && seq.missing.length ? `\n(not in the matrix yet: ${seq.missing.join(', ')})` : '');
+}
+function processTraversal(){
+const currentSelection = pathwaySelect.value;
+let explicitColorArray = null;
+if(currentSelection) {
+explicitColorArray = currentSelection.split(',');
+}
+renderOutput(generateSequence({
+length: Number(len.value),
+seed: Number(seed.value || 999),
+satCoeff: Number(mass.value),
+optimization: Number(voltage.value),
+resistance: Number(charge.value),
+delayCoeff: Number(nulltime.value),
+colorArray: explicitColorArray
+}));
+}
+el('gen').addEventListener('click', processTraversal);
+el('clear').addEventListener('click', ()=>{ seqEl.innerHTML=''; logEl.textContent=''; pathwaySelect.value=''; activeSequence=null; });
+el('exportJson').addEventListener('click', (e)=>{ e.preventDefault();
+if(!activeSequence){ logEl.textContent='Compile a path sequence configuration first.'; return; }
+const payload = JSON.stringify({version:2, architecture:'deterministic-traversal-map', sequence:activeSequence}, null, 2);
+navigator.clipboard?.writeText(payload).catch(()=>{});
+const blob=new Blob([payload],{type:'application/json'}); const url=URL.createObjectURL(blob);
+const a=document.createElement('a'); a.href=url; a.download='traversal_matrix_sequence.json';
+document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+logEl.textContent='JSON schema copied to system clipboard and downloaded successfully.';
+});
+</script>
+</body>
+</html>
