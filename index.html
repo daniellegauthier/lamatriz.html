@@ -55,6 +55,20 @@
 <p><label for="pathway-select">Select your pathway to find what categories create space for your needs.</label><br>
 <select id="pathway-select">
 <option value="">— choose a pathway —</option>
+<optgroup label="sequences">
+<option value="white, blue, green, red, black, brown, yellow, purple">knot</option>
+<option value="grey, pink, gold, nude, orange">plot</option>
+<option value="gold, orange">pain</option>
+<option value="yellow, green">practical</option>
+<option value="blue, brown">spiritual</option>
+<option value="nude, white">prayer</option>
+<option value="purple, grey, red">sad</option>
+<option value="pink, black">precise</option>
+<option value="brown, gold, orange, pink">feminine</option>
+<option value="red, blue, orange">masc</option>
+<option value="red, orange">direct</option>
+</optgroup>
+<optgroup label="connections">
 <option value="brown, gold, orange, pink">curious to thoughtful</option>
 <option value="red, blue, gold, purple">angry to soft</option>
 <option value="purple, red, orange">soft to protective</option>
@@ -72,6 +86,7 @@
 <option value="yellow, brown, green">cocky to observant</option>
 <option value="magenta, pink, green, blue, teal">it to self</option>
 <option value="black, red, green, blue, green, red">toussaint louverture</option>
+</optgroup>
 </select></p>
 
 <!-- 7 · black · order → scale -->
@@ -84,7 +99,7 @@
 <label>Closeness <input id="voltage" type="range" min="0" max="1" step="0.05" value="0.20"> <span class="meta" id="voltageVal">0.20</span></label>
 <label>Friction <input id="charge" type="range" min="0.1" max="2.0" step="0.05" value="1.45"> <span class="meta" id="chargeVal">1.45</span></label>
 <label>Rest <input id="nulltime" type="range" min="0" max="0.9" step="0.05" value="0.65"> <span class="meta" id="nullVal">0.65</span></label>
-<label>Length <input id="length" type="range" min="4" max="32" step="1" value="9"> <span class="meta" id="lenVal">9</span></label>
+<label>Length <input id="length" type="range" min="2" max="32" step="1" value="9"> <span class="meta" id="lenVal">9</span></label>
 <label>Seed <input id="seed" type="number" value="999" step="1" min="0" max="99999" style="width:80px"></label>
 </div>
 
@@ -182,76 +197,62 @@ let idx = SEM.map((c,i)=>targetSet.has(c.name)?i:-1).filter(i=>i>=0);
 if(!idx.length){ const ordered=SEM.map((c,i)=>[i,Math.abs(c.sentN)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]); idx=ordered.slice(0,5); }
 return idx;
 }
-function computeNextNode(cur, resistance, rng){
-const sims = SEM.map((_,j)=>nodeSimilarity(cur,j));
-const dist = sims.map(s=>1-Math.max(0,Math.min(1,s)));
-const matrixWeight = dist.map((d,k)=>k===cur?0:resistance/Math.max(d,1e-3));
-const wSum = matrixWeight.reduce((a,b)=>a+Math.max(0,b),0);
-if(wSum===0) return Math.floor(rng()*SEM.length);
+// Friction shapes the free walk: higher friction = stronger pull toward nearby colors.
+function computeNextNode(cur, friction, rng){
+const dist = SEM.map((_,j)=>1-Math.max(0,Math.min(1,nodeSimilarity(cur,j))));
+const w = dist.map((d,k)=>k===cur?0:Math.pow(1/Math.max(d,0.05), friction*2));
+const wSum = w.reduce((x,y)=>x+y,0);
 let r = rng()*wSum;
-for(let j=0;j<matrixWeight.length;j++){ r-=Math.max(0,matrixWeight[j]); if(r<=0) return j; }
+for(let j=0;j<w.length;j++){ r-=w[j]; if(r<=0) return j; }
 return SEM.length-1;
 }
-function generateSequence({length=11, seed=7, satCoeff=0.15, optimization=0.2, resistance=1.45, delayCoeff=0.65, colorArray=null}={}){
-const rng = seededGen(seed);
+
+/* How each dial shapes the path
+   Light     -> brightness and vividness of every square
+   Closeness -> 0 = bridges are raw blends of their two neighbours; 1 = bridges become the nearest la matrice color
+   Friction  -> how many bridge steps it takes to cross between two colors (far-apart colors need more)
+   Rest      -> share of gaps that get a neutral pause (Seed decides which ones)
+   Length    -> number of colors. Choosing a pathway sets it to that pathway's own count;
+                drag down to stop partway, drag up to keep walking past its last color
+   Each dial uses its own stream of chance, so moving one never reshuffles another. */
+function generateSequence({length=9, seed=7, satCoeff=0.15, optimization=0.2, resistance=1.45, delayCoeff=0.65, colorArray=null}={}){
+const walkRng = seededGen(seed), restRng = seededGen(seed*7+3);
 const neutrals = fetchNeutrals();
-const sequenceOut = [];
+const out = [];
+let idxs, missing = [], pathEnd = Infinity;
 if (colorArray && colorArray.length > 0) {
-// Deterministic traversal: the named colors stay in order; the sliders shape what happens between them.
-//  Node Resistance  -> contrasting neighbours need more bridge steps to cross
-//  Path Optimization-> bridges snap to the nearest la matrice color (high) or stay raw blends (low)
-//  Dynamic Delays   -> chance of a neutral pause after each color (Seed makes it repeatable)
-//  Path Length Limit-> the path is compressed to fit, keeping first and last color
-const idxs = colorArray.map(findColor).filter(i=>i>=0);
-const missing = colorArray.filter(c=>findColor(c)<0).map(c=>c.trim());
-const push = (row, extra={}) => sequenceOut.push({t:sequenceOut.length, name:row.name, base_rgb:row.rgb.slice(), rgb:applySaturation(row.rgb, extra.rest?satCoeff*0.2:satCoeff), sentiment:row.sent, words:row.words, gnh:row.gnh, ...extra});
-idxs.forEach((cur, k) => {
-  push(SEM[cur]);
-  const nxt = idxs[k+1];
-  if(nxt !== undefined){
-    const dissim = 1 - nodeSimilarity(cur, nxt);
-    const bridges = Math.round(dissim * resistance * 2);
-    for(let b=1; b<=bridges; b++){
-      const f = b/(bridges+1);
-      const raw = mixRgb(SEM[cur].rgb, SEM[nxt].rgb, f);
-      if(optimization >= 0.5){
-        const n = nearestNode(raw);
-        const last=sequenceOut[sequenceOut.length-1]; if(n!==cur && n!==nxt && last.name!==SEM[n].name) push(SEM[n], {bridge:true});
-      } else {
-        sequenceOut.push({t:sequenceOut.length, name:SEM[cur].name+'→'+SEM[nxt].name, base_rgb:raw, rgb:applySaturation(raw, satCoeff), sentiment:(SEM[cur].sent+SEM[nxt].sent)/2, words:[], gnh:'bridge', bridge:true});
-      }
-    }
-  }
-  const delayProbability = delayCoeff * (1 - Math.abs(SEM[cur].sentN));
-  if(nxt !== undefined && rng() < delayProbability){
-    const ni = neutrals[Math.floor(rng() * neutrals.length)];
-    push(SEM[ni], {rest:true});
-  }
-});
-// compress to the length limit, always keeping the named colors before bridges/pauses
-while(sequenceOut.length > length){
-  let drop = sequenceOut.findIndex(s=>s.rest);
-  if(drop<0) drop = sequenceOut.findIndex(s=>s.bridge);
-  if(drop<0) break;
-  sequenceOut.splice(drop,1);
-}
-sequenceOut.missing = missing;
+  idxs = colorArray.map(findColor).filter(i=>i>=0);
+  missing = colorArray.filter(c=>findColor(c)<0).map(c=>c.trim());
+  if(length < idxs.length) idxs = idxs.slice(0, Math.max(length,1));
+  pathEnd = idxs.length;
+  while(idxs.length < length) idxs.push(computeNextNode(idxs[idxs.length-1], resistance, walkRng));
 } else {
-// Fallback Dynamic Engine Path Calculation
-let cur = SEM.map((c,i)=>[i,Math.abs(c.sentN)]).sort((a,b)=>a[1]-b[1])[0][0];
-for(let t=0; t<length; t++){
-const row = SEM[cur];
-sequenceOut.push({t, name:row.name, base_rgb:row.rgb.slice(), rgb:applySaturation(row.rgb, satCoeff), sentiment:row.sent, words:row.words, gnh:row.gnh});
-const delayProbability = delayCoeff * (1 - Math.abs(row.sentN));
-if(rng() < delayProbability){
-const ni = neutrals[Math.floor(rng() * neutrals.length)];
-const nrow = SEM[ni];
-sequenceOut.push({t:t+0.5, name:nrow.name, base_rgb:nrow.rgb.slice(), rgb:applySaturation(nrow.rgb, satCoeff*0.2), sentiment:nrow.sent, words:nrow.words, gnh:nrow.gnh, rest:true});
+  pathEnd = 0;
+  idxs = [SEM.map((c,i)=>[i,Math.abs(c.sentN)]).sort((a,b)=>a[1]-b[1])[0][0]];
+  while(idxs.length < length) idxs.push(computeNextNode(idxs[idxs.length-1], resistance, walkRng));
 }
-cur = computeNextNode(cur, resistance * (1 + 0.4 * optimization), rng);
-}
-}
-return sequenceOut;
+// Rest: the share of gaps that get a pause rises steadily with the dial; Seed decides which gaps.
+const hops = Math.max(idxs.length-1, 0);
+const order = Array.from({length:hops},(_,k)=>[k,restRng()]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+const restAt = new Set(order.slice(0, Math.round(delayCoeff*hops)));
+const restPick = Array.from({length:hops},()=>Math.floor(restRng()*neutrals.length));
+const node = (row, extra={}) => ({t:out.length, name:row.name, base_rgb:row.rgb.slice(), rgb:applySaturation(row.rgb, extra.rest?satCoeff*0.2:satCoeff), sentiment:row.sent, words:row.words, gnh:row.gnh, ...extra});
+idxs.forEach((cur, k) => {
+  out.push(node(SEM[cur], k>=pathEnd ? {walk:true} : {}));
+  const nxt = idxs[k+1];
+  if(nxt === undefined) return;
+  const dissim = 1 - nodeSimilarity(cur, nxt);
+  const bridges = Math.round(dissim * resistance * 2);
+  for(let b=1; b<=bridges; b++){
+    const raw = mixRgb(SEM[cur].rgb, SEM[nxt].rgb, b/(bridges+1));
+    const near = SEM[nearestNode(raw)];
+    const rgb = mixRgb(raw, near.rgb, optimization);
+    out.push({t:out.length, name: optimization>=0.5 ? near.name : SEM[cur].name+'→'+SEM[nxt].name, base_rgb:rgb, rgb:applySaturation(rgb, satCoeff), sentiment:near.sent, words:near.words, gnh: optimization>=0.5 ? near.gnh : 'bridge', bridge:true});
+  }
+  if(restAt.has(k)) out.push(node(SEM[neutrals[restPick[k]]], {rest:true}));
+});
+out.missing = missing;
+return out;
 }
 
 /* ---------- UI Event Wiring ---------- */
@@ -267,7 +268,11 @@ el('nullVal').textContent=Number(nulltime.value).toFixed(2);
 el('lenVal').textContent=String(len.value);
 }
 ['input','change'].forEach(evt=>[mass,voltage,charge,nulltime,len,seed].forEach(c=>c.addEventListener(evt,()=>{ syncControlLabels(); if(activeSequence) processTraversal(); })));
-pathwaySelect.addEventListener('change', processTraversal);
+pathwaySelect.addEventListener('change', ()=>{
+  const v = pathwaySelect.value;
+  if(v){ len.value = v.split(',').filter(c=>findColor(c)>=0).length; syncControlLabels(); }
+  processTraversal();
+});
 syncControlLabels();
 
 let activeSequence = null;
@@ -287,7 +292,7 @@ seqEl.appendChild(cell);
 logEl.textContent = seq.map((s,i)=>{
 const steps = `${String(i + 1).padStart(2, '0')}. `;
 const colorTag = `${s.name.toUpperCase().padEnd(7)}`;
-const modeTag = s.rest ? ` [Dynamic Delay] ` : s.bridge ? ` [Bridge]        ` : ` [Active Node]  `;
+const modeTag = s.rest ? ` [Rest]          ` : s.bridge ? ` [Bridge]        ` : s.walk ? ` [Walk]          ` : ` [Pathway]      `;
 const indicatorTag = `Indicator: ${s.gnh.padEnd(23)}`;
 const colorHex = ` ${hex(s.rgb)}`;
 return steps + colorTag + modeTag + indicatorTag + colorHex;
