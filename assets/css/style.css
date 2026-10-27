@@ -721,3 +721,9 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   .title-spaced { letter-spacing: .3em; font-size: 22px; }
   .howe { font-size: 18px !important; }
 }
+
+/* 10/26/26 — photos: context images, kept small and quiet */
+figure.photo { margin: 18px 0; }
+figure.photo img { width: 100%; max-width: 320px; height: auto; border: 1px solid var(--border); }
+figure.photo.wide img { max-width: 560px; }
+figure.photo figcaption { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; max-width: 560px; }
