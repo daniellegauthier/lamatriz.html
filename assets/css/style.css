@@ -727,3 +727,8 @@ figure.photo { margin: 18px 0; }
 figure.photo img { width: 100%; max-width: 320px; height: auto; border: 1px solid var(--border); }
 figure.photo.wide img { max-width: 560px; }
 figure.photo figcaption { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; max-width: 560px; }
+
+/* 10/27/26 — cited quotes: a thin rule at left, source in typewriter */
+blockquote.q { margin: 12px 0; padding: 2px 0 2px 16px; border-left: 1px solid var(--border); font-style: normal; }
+blockquote.q cite { display: block; margin-top: 4px; font-family: var(--mono); font-size: 13px; font-style: normal; color: var(--muted); }
+body.poetic main blockquote.q { font-size: 17px; line-height: 1.6; }
